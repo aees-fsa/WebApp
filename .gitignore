@@ -51,3 +51,10 @@
 
 ### Jetbrains
 /.idea
+
+
+### Webpack
+/node_modules/
+/public/build/
+npm-debug.log
+yarn-error.log

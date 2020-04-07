@@ -1,5 +1,4 @@
-<?php
-/**
+/*
  * Copyright (C) 2020 Andrew SASSOYE
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -16,11 +15,10 @@
  *
  */
 
-return [
-    Symfony\Bundle\FrameworkBundle\FrameworkBundle::class => ['all' => true],
-    Doctrine\Bundle\DoctrineBundle\DoctrineBundle::class => ['all' => true],
-    Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle::class => ['all' => true],
-    Symfony\Bundle\TwigBundle\TwigBundle::class => ['all' => true],
-    Symfony\Bundle\WebProfilerBundle\WebProfilerBundle::class => ['dev' => true, 'test' => true],
-    Symfony\WebpackEncoreBundle\WebpackEncoreBundle::class => ['all' => true],
-];
+// any CSS you import will output into a single css file (app.css in this case)
+import '../css/app.css';
+
+// Need jQuery? Install it with "yarn add jquery", then uncomment to import it.
+// import $ from 'jquery';
+
+console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
