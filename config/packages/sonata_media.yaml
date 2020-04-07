@@ -1,0 +1,44 @@
+##
+# Copyright (C) 2020 Andrew SASSOYE
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, version 3.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+##
+sonata_media:
+    db_driver: doctrine_orm
+    default_context: default
+    contexts:
+        default:
+            providers:
+                - sonata.media.provider.youtube
+                - sonata.media.provider.image
+                - sonata.media.provider.file
+
+            formats:
+                small: { width: 100 , quality: 70}
+                big:   { width: 500 , quality: 70}
+
+    cdn:
+        server:
+            path: /upload/media
+
+    filesystem:
+        local:
+            # Directory for uploads should be writable
+            directory: "%kernel.project_dir%/public/upload/media"
+            create: true
+
+    class:
+        media:              App\Entity\Media\Media
+        gallery:            App\Entity\Media\Gallery
+        gallery_has_media:  App\Entity\Media\GalleryHasMedia
+        category:           App\Entity\Classification\Category
