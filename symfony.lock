@@ -230,6 +230,9 @@
     "symfony/stopwatch": {
         "version": "v4.4.7"
     },
+    "symfony/templating": {
+        "version": "v4.4.7"
+    },
     "symfony/var-dumper": {
         "version": "v4.4.7"
     },
