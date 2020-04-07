@@ -1,5 +1,5 @@
 {
-    "type": "AEES/webapp",
+    "type": "project",
     "license": "AGPL-3.0-or-later",
     "require": {
         "php": "^7.1.3",
@@ -9,10 +9,19 @@
         "symfony/dotenv": "4.4.*",
         "symfony/flex": "^1.3.1",
         "symfony/framework-bundle": "4.4.*",
+        "symfony/orm-pack": "^1.0",
         "symfony/yaml": "4.4.*"
     },
     "require-dev": {
     },
+    "authors": [
+        {
+            "name": "Andrew SASSOYE",
+            "email": "andrew@sassoye.be",
+            "homepage": "https://www.asassoye.dev",
+            "role": "Developer"
+        }
+    ],
     "config": {
         "preferred-install": {
             "*": "dist"
