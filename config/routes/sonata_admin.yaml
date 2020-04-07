@@ -13,24 +13,12 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ##
-framework:
-    secret: '%env(APP_SECRET)%'
-    #csrf_protection: true
-    #http_method_override: true
 
-    # Enables session support. Note that the session will ONLY be started if you read or write from it.
-    # Remove or comment this section to explicitly disable session support.
-    session:
-        handler_id: null
-        cookie_secure: auto
-        cookie_samesite: lax
+admin_area:
+    resource: "@SonataAdminBundle/Resources/config/routing/sonata_admin.xml"
+    prefix: /admin
 
-    #esi: true
-    #fragments: true
-    php_errors:
-        log: true
-
-    assets:
-        json_manifest_path: '%kernel.project_dir%/public/build/manifest.json'
-
-    translator: { fallbacks: ['fr'] }
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /admin
