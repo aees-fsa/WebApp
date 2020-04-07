@@ -1,0 +1,40 @@
+##
+# Copyright (C) 2020 Andrew SASSOYE
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, version 3.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+##
+sonata_user:
+    security_acl: false
+
+    manager_type: orm
+
+    table:
+        user_group: "user__user_group"
+
+    class:                  # Entity Classes
+        user:               App\Entity\User\User
+        group:              App\Entity\User\Group
+
+    admin:                  # Admin Classes
+        user:
+            class:          App\Admin\User\UserAdmin
+            controller:     Sonata\AdminBundle\Controller\CRUDController
+            translation:    SonataUserBundle
+
+        group:
+            class:          App\Admin\User\GroupAdmin
+            controller:     Sonata\AdminBundle\Controller\CRUDController
+            translation:    SonataUserBundle
+
+    impersonating:
+        route: sonata_admin_dashboard

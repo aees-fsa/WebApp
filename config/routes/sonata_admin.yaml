@@ -31,3 +31,19 @@ _sonata_admin:
         domain: '%domain.aees%'
     requirements:
         domain: '%domain.aees%'
+
+sonata_user_admin_security:
+    host: "admin.{domain}"
+    resource: '@SonataUserBundle/Resources/config/routing/admin_security.xml'
+    defaults:
+        domain: '%domain.aees%'
+    requirements:
+        domain: '%domain.aees%'
+
+sonata_user_admin_resetting:
+    host: "admin.{domain}"
+    resource: '@SonataUserBundle/Resources/config/routing/admin_resetting.xml'
+    defaults:
+        domain: '%domain.aees%'
+    requirements:
+        domain: '%domain.aees%'

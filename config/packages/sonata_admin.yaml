@@ -21,3 +21,8 @@ sonata_admin:
             - { type: sonata.admin.block.admin_list, position: left }
     options:
         legacy_twig_text_extension: false
+    security:
+        handler: sonata.admin.security.handler.role
+
+        role_admin: ROLE_ADMIN
+        role_super_admin: ROLE_SUPER_ADMIN
