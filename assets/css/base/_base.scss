@@ -1,4 +1,4 @@
-/*
+/*!
  * Copyright (C) 2020 Andrew SASSOYE
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -15,5 +15,29 @@
  *
  */
 
-import 'bootstrap'
-import '../css/main.scss';
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  background-color: $bg-color-stand;
+  font-family: $font-stack;
+  font-size: 14px;
+  width: 100%;
+  margin-bottom: 400px;
+
+}
+
+#content {
+  border-radius: 5px;
+  background-color: #ffffff;
+  border: 1px solid #dadedf;
+  font-family: 'Lato', 'sans-serif';
+  margin-top: 10px;
+  margin-bottom: 20px;
+
+  p {
+    text-align: justify;
+  }
+}

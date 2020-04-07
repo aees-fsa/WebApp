@@ -41,8 +41,6 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/js/app.js')
-    //.addEntry('page1', './assets/js/page1.js')
-    //.addEntry('page2', './assets/js/page2.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
@@ -70,22 +68,25 @@ Encore
         config.corejs = 3;
     })
 
-// enables Sass/SCSS support
-//.enableSassLoader()
+    // enables Sass/SCSS support
+    .enableSassLoader()
 
-// uncomment if you use TypeScript
-//.enableTypeScriptLoader()
+    .enableIntegrityHashes(Encore.isProduction())
 
-// uncomment to get integrity="..." attributes on your script & link tags
-// requires WebpackEncoreBundle 1.4 or higher
-//.enableIntegrityHashes(Encore.isProduction())
+    .autoProvidejQuery()
 
-// uncomment if you're having problems with a jQuery plugin
-//.autoProvidejQuery()
+    .copyFiles({
+        from: './assets/images',
+        to: 'images/[path][name].[hash:8].[ext]',
+        pattern: /\.(png|jpg|jpeg|gif|ico)$/
+    })
 
-// uncomment if you use API Platform Admin (composer req api-admin)
-//.enableReactPreset()
-//.addEntry('admin', './assets/js/admin.js')
-;
+    .configureFilenames({
+        js: 'js/[name].[chunkhash].js',
+        css: 'css/[name].[contenthash].css',
+        images: 'images/[name].[hash:8].[ext]',
+        fonts: 'fonts/[name].[hash:8].[ext]'
+    });
+
 
 module.exports = Encore.getWebpackConfig();

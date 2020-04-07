@@ -1,4 +1,4 @@
-/*
+/*!
  * Copyright (C) 2020 Andrew SASSOYE
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -15,5 +15,17 @@
  *
  */
 
-import 'bootstrap'
-import '../css/main.scss';
+@import "abstracts/variables";
+@import "abstracts/functions";
+@import "abstracts/mixins";
+@import "abstracts/placeholders";
+
+@import "~bootstrap";
+
+@import "base/base";
+@import "base/typography";
+@import "base/animations";
+@import "base/utilities";
+
+@import "components/header";
+@import "components/footer";

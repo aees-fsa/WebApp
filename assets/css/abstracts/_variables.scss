@@ -1,4 +1,4 @@
-/*
+/*!
  * Copyright (C) 2020 Andrew SASSOYE
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -15,5 +15,20 @@
  *
  */
 
-import 'bootstrap'
-import '../css/main.scss';
+$font-stack: Lato, sans-serif;
+$font-menu: 'Yanone Kaffeesatz', sans-serif;
+$bg-color-primary: #34495e;
+$bg-color-second: #19242f;
+$bg-color-stand: #ecf0f1;
+
+$link-color: #5c82aa;
+
+$header-shadow-color: rgba(0, 0, 0, 0.75);
+
+$header-logo-max-height: 170px;
+
+//MAIN MENU
+$main-menu-bg: transparant;
+$main-menu-bg-hover: #fff;
+$main-menu-color: #fff;
+$main-menu-color-hover: $bg-color-primary;
