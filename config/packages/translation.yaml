@@ -14,7 +14,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ##
 framework:
-    default_locale: fr
+    default_locale: '%base.locale%'
     translator:
         default_path: '%kernel.project_dir%/translations'
         fallbacks:

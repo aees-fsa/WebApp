@@ -19,6 +19,9 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
+    base.locale: 'fr-BE'
+    domain.aees: '%env(DOMAIN_AEES)%'
+    domain.jobinge: '%env(DOMAIN_JOBINGE)%'
 
 services:
     # default configuration for services in *this* file
