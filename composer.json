@@ -40,7 +40,7 @@
     "sonata-project/classification-bundle": "^3.5",
     "sonata-project/intl-bundle": "^2.4",
     "sonata-project/news-bundle": "^3.2",
-    "sonata-project/core-bundle": "3.8",
+    "sonata-project/core-bundle": "3.17.2",
     "sonata-project/block-bundle": "^3.9",
     "symfony/twig-bundle": "^3.4",
     "swiftmailer/swiftmailer": "5.4.6",
