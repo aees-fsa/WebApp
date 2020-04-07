@@ -1,0 +1,124 @@
+##
+# Copyright (C) 2017 Andrew SASSOYE
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, version 3.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+##
+admin_area:
+  resource: "@SonataAdminBundle/Resources/config/routing/sonata_admin.xml"
+  host:     admin.aees.be
+
+_sonata_admin:
+  resource: .
+  type: sonata_admin
+  host:     admin.aees.be
+  prefix: /
+
+
+sonata_user_admin_security:
+  resource: '@SonataUserBundle/Resources/config/routing/admin_security.xml'
+  host:     admin.aees.be
+  prefix: /
+
+
+fos_user_security:
+  #resource: "@SonataUserBundle/Resources/config/routing/sonata_security_1.xml"
+  #host:     accounts.aees.be
+  resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_register:
+  host: accounts.aees.be
+  resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+  prefix: /register
+
+fos_user_resetting:
+  host: accounts.aees.be
+  resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+  prefix: /resetting
+
+fos_user_profile:
+  resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+  prefix: /profile
+
+fos_user_change_password:
+  host: accounts.aees.be
+  resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+  prefix: /profile
+
+  #sonata_user_resetting:
+  #    resource: "@SonataUserBundle/Resources/config/routing/sonata_resetting_1.xml"
+  #    prefix: /resetting
+
+  #sonata_user_profile:
+  #    resource: "@SonataUserBundle/Resources/config/routing/sonata_profile_1.xml"
+  #    host:     aees.be
+  #    prefix: /profile
+
+  #sonata_user_register:
+  #    resource: "@SonataUserBundle/Resources/config/routing/sonata_registration_1.xml"
+  #    host:     aees.be
+  #    prefix: /register
+
+  #sonata_user_change_password:
+  #    resource: "@SonataUserBundle/Resources/config/routing/sonata_change_password_1.xml"
+  #   host:     aees.be
+  #   prefix: /profile
+
+
+
+sonata_user_admin_resetting:
+  resource: '@SonataUserBundle/Resources/config/routing/admin_resetting.xml'
+  host:     admin.aees.be
+  prefix: /resetting
+
+aees_vote:
+  resource: '@AEESVoteBundle/Resources/config/routing.yml'
+  host:    aees.be
+  prefix: /votes
+
+#sonata_page_exceptions:
+#    resource: '@SonataPageBundle/Resources/config/routing/exceptions.xml'
+#    prefix: /
+
+sonata_page_cache:
+  resource: '@SonataPageBundle/Resources/config/routing/cache.xml'
+  prefix: /
+
+gallery:
+  resource: '@SonataMediaBundle/Resources/config/routing/gallery.xml'
+  host:     admin.aees.be
+  prefix: /media/gallery
+
+media:
+  resource: '@SonataMediaBundle/Resources/config/routing/media.xml'
+  host:     admin.aees.be
+  prefix: /media
+
+news:
+  resource: '@SonataNewsBundle/Resources/config/routing/news.xml'
+  host:     aees.be
+  prefix: /ingenu
+
+contact:
+  resource: '@AEESSiteBundle/Resources/config/routing.yml'
+  host:     aees.be
+  prefix: /contact
+
+jobinge:
+  host: jobinge.be
+  resource: '@JOBINGEEntreprisesBundle/Resources/config/routing.yml'
+  prefix: /
+
+jobinge_jobfair:
+  host: jobinge.be
+  resource: '@JOBINGESiteBundle/Resources/config/routing.yml'
+

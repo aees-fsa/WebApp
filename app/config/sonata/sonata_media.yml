@@ -1,0 +1,83 @@
+##
+# Copyright (C) 2017 Andrew SASSOYE
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, version 3.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+##
+sonata_media:
+    # if you don't use default namespace configuration
+    #class:
+    #    media: MyVendor\MediaBundle\Entity\Media
+    #    gallery: MyVendor\MediaBundle\Entity\Gallery
+    #    gallery_has_media: MyVendor\MediaBundle\Entity\GalleryHasMedia
+    db_driver: doctrine_orm # or doctrine_mongodb, doctrine_phpcr it is mandatory to choose one here
+    default_context: default # you need to set a context
+    contexts:
+        default:  # the default context is mandatory
+            providers:
+                - sonata.media.provider.dailymotion
+                - sonata.media.provider.youtube
+                - sonata.media.provider.image
+                - sonata.media.provider.file
+                - sonata.media.provider.vimeo
+
+            formats:
+                small: { width: 100 , quality: 70}
+                big:   { width: 500 , quality: 70}
+        slider:
+            providers:
+                - sonata.media.provider.image
+            formats:
+
+        news:
+            providers:
+                - sonata.media.provider.dailymotion
+                - sonata.media.provider.youtube
+                - sonata.media.provider.image
+
+            formats:
+                small: { width: 150, quality: 95}
+        events:
+            providers:
+                - sonata.media.provider.image
+            formats:
+                cover: { width: 1158 , quality: 95}
+
+        header_image:
+            providers:
+                - sonata.media.provider.image
+            formats:
+
+        jobinge_contrats:
+            providers:
+                - sonata.media.provider.file
+
+        jobinge_logosHQ:
+            providers:
+                - sonata.media.provider.file
+
+        jobinge_logos:
+            providers:
+                - sonata.media.provider.image
+
+        jobinge_pub:
+            providers:
+                - sonata.media.provider.file
+
+    cdn:
+        server:
+            path: https://uploads.aees.be/ # http://media.sonata-project.org/
+
+    filesystem:
+        local:
+            directory:  "%kernel.root_dir%/../web/uploads/media"
+            create:     false

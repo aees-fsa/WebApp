@@ -1,0 +1,57 @@
+{#
+
+ Copyright (C) 2017 Andrew SASSOYE
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, version 3.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+#}
+<div class="jumbotron">
+	<h1>{% trans %}jobinge.register.step2.title{% endtrans %}</h1>
+	<p>
+		{% trans %}jobinge.register.step2.description{% endtrans %}
+	</p>
+</div>
+
+{{ form_start(form) }}
+{{ form_errors(form) }}
+
+<div class="row">
+	<div class="col-12">
+		<div class="card">
+			<div class="card-header">
+				<h4>{% trans %}jobinge.register.company{% endtrans %}</h4>
+			</div>
+			<div class="card-body">
+				{{ form_rest(form) }}
+			</div>
+		</div>
+
+		<div class="card">
+			<div class="card-body">
+				<div class="form-group">
+					<button class="btn btn-primary" title="submit">
+						{% trans %}jobinge.register.next{% endtrans %}
+					</button>
+					<a class="btn btn-light" title="reset"
+					   href="{{ path('jobinge.registrationEntreprise.registerEntreprise') }}">
+						{% trans %}jobinge.register.prev{% endtrans %}
+					</a>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+{{ form_end(form) }}

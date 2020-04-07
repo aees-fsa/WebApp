@@ -1,0 +1,62 @@
+{#
+
+ Copyright (C) 2017 Andrew SASSOYE
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, version 3.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+#}
+<div class="jumbotron">
+	<h1>{% trans %}jobinge.register.step1.title{% endtrans %}</h1>
+	<p>{% trans %}jobinge.register.step1.description{% endtrans %}</p>
+</div>
+
+<div class="jumbotron">
+	<h1>{% trans %}jobinge.register.step2.title{% endtrans %}</h1>
+	<p>{% trans %}jobinge.register.step2.description{% endtrans %}</p>
+</div>
+
+<div class="jumbotron">
+	<h1>{% trans %}jobinge.register.step3.title{% endtrans %}</h1>
+	<p>{% trans %}jobinge.register.step3.description{% endtrans %}</p>
+</div>
+
+{{ form_start(form) }}
+{{ form_errors(form) }}
+
+<div class="row">
+	<div class="col-12">
+		<div class="card">
+			<div class="card-header">
+				<h4>{% trans %}jobinge.register.terms{% endtrans %}</h4>
+			</div>
+			<div class="card-body">
+
+				{{ form_rest(form) }}
+
+				<ul>
+					<li><a href='/uploads/media/default/0001/01/c1fa56cf2ada3db3a55a076cae78813186ce4750.pdf'
+					       target='_blank'>{% trans %}jobinge.register.terms{% endtrans %}</a></li>
+				</ul>
+
+				<div class="form-group">
+					<button class="btn btn-primary" formnovalidate>
+						{% trans %}jobinge.register.next{% endtrans %}
+					</button>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+{{ form_end(form) }}

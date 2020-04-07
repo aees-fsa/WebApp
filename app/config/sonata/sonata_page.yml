@@ -1,0 +1,185 @@
+##
+# Copyright (C) 2017 Andrew SASSOYE
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, version 3.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+##
+cmf_routing:
+    chain:
+        routers_by_id:
+            sonata.page.router: 150
+            router.default: 100
+
+
+
+sonata_page:
+    slugify_service:   sonata.core.slugify.cocur # old BC value is sonata.core.slugify.native
+    multisite: host_with_path_by_locale
+    default_template: default # template key from templates section, used as default for new pages
+    ignore_route_patterns:
+        - ^(.*)admin(.*)   # ignore admin route, ie route containing 'admin'
+        - ^_(.*)          # ignore symfony routes
+
+    ignore_uri_patterns:
+        - ^/admin(.*)
+        - ^/api/(.*)
+        - ^jobinge_cv(.*)
+
+    ignore_route_patterns:
+        - (.*)admin(.*)     # ignore admin route, ie route containing 'admin'
+        - ^_(.*)            # ignore symfony routes
+        - (.*)cvbook(.*)
+
+    ignore_routes:
+        - sonata_page_cache_esi
+        - sonata_page_cache_ssi
+        - sonata_page_js_sync_cache
+        - sonata_page_js_async_cache
+        - sonata_cache_esi
+        - sonata_cache_ssi
+        - sonata_cache_js_async
+        - sonata_cache_js_sync
+        - sonata_cache_apc
+
+    catch_exceptions:
+        not_found: [404]
+        fatal: [500]
+    templates:
+        default:
+            path: ':templates:default.html.twig'
+            name: 'default'
+            containers:
+                header:
+                    name: Header
+                content:
+                    name: Contenu
+            matrix:
+                layout: |
+
+                    HHHHHHHH
+                    CCCCCCCC
+                    CCCCCCCC
+
+                mapping:
+                    H: header
+                    C: content
+                    F: footer
+        col8+4:
+            path: ':templates:col8+4.html.twig'
+            name: 'col8+4'
+            containers:
+                header:
+                    name: Header
+                content:
+                    name: Contenu
+                aside:
+                    name: Aside
+            matrix:
+                layout: |
+
+                    HHHHHHHH
+                    CCCCCAAA
+                    CCCCCAAA
+
+                mapping:
+                    H: header
+                    C: content
+                    A: aside
+
+        col4+4+4:
+            path: ':templates:col4+4+4.html.twig'
+            name: '3 collones'
+            containers:
+                header:
+                    name: Header
+                above:
+                    name: Contenu du dessus
+                col1:
+                    name: Colonne 1
+                col2:
+                    name: Colonne 2
+                col3:
+                    name: Colonne 3
+                below:
+                    name: Contenu du dessous
+
+            matrix:
+                layout: |
+                    HHHHHHHHH
+                    AAAAAAAAA
+                    AAAAAAAAA
+                    111222333
+                    111222333
+                    111222333
+                    BBBBBBBBB
+                    BBBBBBBBB
+
+                mapping:
+                    H: header
+                    A: above
+                    1: col1
+                    2: col2
+                    3: col3
+                    B: below
+
+        col6+6:
+            path: ':templates:col6+6.html.twig'
+            name: '2 colonnes'
+            containers:
+                header:
+                    name: Header
+
+                above:
+                    name: Contenu du dessus
+                col1:
+                    name: Colonne 1
+                col2:
+                    name: Colonne 2
+                below:
+                    name: Contenu du dessous
+            matrix:
+                layout: |
+
+                    HHHHHHHH
+                    AAAAAAAA
+                    AAAAAAAA
+                    11112222
+                    11112222
+                    11112222
+                    BBBBBBBB
+
+                mapping:
+                    H: header
+                    A: above
+                    1: col1
+                    2: col2
+                    B: below
+
+
+        homepage:
+            path: ':templates:homepage.html.twig'
+            name: 'homepage'
+            containers:
+                slider:
+                    name: Slider
+            matrix:
+                layout: |
+
+                    SSSSSSSS
+
+                mapping:
+                    S: slider
+
+
+
+    # Generates a snapshot when a page is saved (from the admin)
+    direct_publication: true # or %kernel.debug% if you want to publish in dev mode (but not in prod)

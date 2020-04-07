@@ -1,0 +1,101 @@
+{#
+
+ Copyright (C) 2017 Andrew SASSOYE
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, version 3.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+#}
+
+<div class="jumbotron">
+	<h1>{{ vl.name }}</h1>
+	<p>{{ vl.description }}</p>
+
+</div>
+
+{% if vl.status == 1 %}
+	<div class="jumbotron">
+		<div class="thumbnail">
+			<div class="caption">
+				<h1>
+					Vote en cours
+				</h1>
+
+				{% set pourcentage = total / vl.maxVotes * 100 %}
+
+				{% if pourcentage == 100 %}
+					{% set progress = 'progress-bar-success' %}
+				{% else %}
+					{% set progress = 'progress-bar-warning' %}
+				{% endif %}
+
+				<div class="progress">
+					<div class="progress-bar {{ progress }}" role="progressbar" aria-valuenow="{{ pourcentage }}"
+					     aria-valuemin="0" aria-valuemax="100" style="width: {{ pourcentage }}%;">
+						{{ total }} sur {{ vl.maxVotes }}
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+{% elseif vl.status == 2 %}
+	<div class="jumbotron">
+		<div class="thumbnail">
+			<div class="caption">
+				<h4>
+					Nombre de voix
+				</h4>
+
+				{% set pourcentage = total / vl.maxVotes * 100 %}
+
+				{% if pourcentage == 100 %}
+					{% set progress = 'bg-success' %}
+				{% else %}
+					{% set progress = 'bg-warning' %}
+				{% endif %}
+
+				<div class="progress">
+					<div class="progress-bar {{ progress }}" role="progressbar" aria-valuenow="{{ pourcentage }}"
+					     aria-valuemin="0" aria-valuemax="100" style="width: {{ pourcentage }}%;">
+						{{ total }} sur {{ vl.maxVotes }}
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<div class="thumbnail">
+		<div class="caption">
+
+			{% for choice in choices %}
+
+				<h2>{{ choice.name }}</h2>
+
+				{% set pourcentage = choice.result / total * 100 %}
+
+				<div class="progress ">
+					<div class="progress-bar " role="progressbar" aria-valuenow="{{ pourcentage }}" aria-valuemin="0"
+					     aria-valuemax="100" style="width: {{ pourcentage }}%;">
+						{{ choice.result }} sur {{ total }} ({{ pourcentage | round(2) }}%)
+					</div>
+				</div>
+
+			{% endfor %}
+
+		</div>
+	</div>
+
+{% else %}
+
+{% endif %}

@@ -1,0 +1,107 @@
+##
+# Copyright (C) 2017 Andrew SASSOYE
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, version 3.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+##
+services:
+    jobinge.admin.forum:
+        class: JOBINGE\ForumBundle\Admin\ForumAdmin
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: "Forum Entreprises", label: "Dates"}
+        arguments:
+            - ~
+            - JOBINGE\ForumBundle\Entity\Forum
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+
+    jobinge.admin.forumdates:
+        class: JOBINGE\ForumBundle\Admin\ForumDatesAdmin
+        tags:
+            - {name: sonata.admin, manager_type: orm, show_in_dashboard: false}
+        arguments:
+            - ~
+            - JOBINGE\ForumBundle\Entity\ForumDates
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+
+    jobinge.admin.packs:
+        class: JOBINGE\ForumBundle\Admin\PacksAdmin
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: "Forum Entreprises", label: "Packs"}
+        arguments:
+            - ~
+            - JOBINGE\ForumBundle\Entity\Packs
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+
+    jobinge.admin.inscription:
+        class: JOBINGE\ForumBundle\Admin\InscriptionAdmin
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: "Forum Entreprises", label: "Inscriptions au Forums"}
+        arguments:
+            - ~
+            - JOBINGE\ForumBundle\Entity\Inscription
+            - JOBINGEForumBundle:InscriptionCRUD
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+
+    jobinge.admin.inscriptionelement:
+        class: JOBINGE\ForumBundle\Admin\InscriptionElementAdmin
+        tags:
+            - {name: sonata.admin, manager_type: orm, show_in_dashboard: false}
+        arguments:
+            - ~
+            - JOBINGE\ForumBundle\Entity\InscriptionElement
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+
+    jobinge.admin.masters:
+        class: JOBINGE\ForumBundle\Admin\MastersAdmin
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: "Forum Entreprises", label: "Masters"}
+        arguments:
+            - ~
+            - JOBINGE\ForumBundle\Entity\Masters
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+
+    jobinge.admin.conferences:
+        class: JOBINGE\ForumBundle\Admin\ConferenceAdmin
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: "Forum Entreprises", label: "Conférences"}
+        arguments:
+            - ~
+            - JOBINGE\ForumBundle\Entity\Conference
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+
+    jobinge.admin.cv:
+        class: JOBINGE\ForumBundle\Admin\CvsAdmin
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: "Forum Entreprises", label: "CV Book"}
+        arguments:
+            - ~
+            - JOBINGE\ForumBundle\Entity\CVs
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+
+    jobinge.admin.latex:
+        class: JOBINGE\ForumBundle\Service\Latex
+        arguments: ['@twig']

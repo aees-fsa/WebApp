@@ -1,0 +1,200 @@
+{#
+
+ Copyright (C) 2017 Andrew SASSOYE
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, version 3.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+#}
+
+{%- block sonata_page_html_tag -%}
+<!DOCTYPE html>
+<html {{ sonata_seo_html_attributes() }}>
+{% endblock %}
+{% block sonata_page_head %}
+	<head {{ sonata_seo_head_attributes() }}>
+		{{ sonata_seo_metadatas() }}
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+		<title>
+			{% if site.title is defined and site.title is not null %}
+				{% if page.title is defined and page.title is not null %}
+					{{ site.title }} {{ page.title }}
+				{% else %}
+					{{ site.title }}
+				{% endif %}
+			{% else %}
+				{% if page.title is defined and page.title is not null %}
+					{{ page.title }}
+				{% endif %}
+			{% endif %}
+		</title>
+
+		{% block sonata_page_stylesheets %}
+			{% stylesheets filter="scssphp" output="css/style_jobinge.css"
+				"@JOBINGESiteBundle/Resources/assets/scss/main.scss" %}
+				<link rel="stylesheet" href="{{ asset_url }}">
+			{% endstylesheets %}
+		{% endblock %}
+
+		{{ sonata_seo_link_canonical() }}
+		{{ sonata_seo_lang_alternates() }}
+
+		{% include ':jobinge:analytics.html.twig' %}
+
+	</head>
+{% endblock %}
+{% block sonata_page_body_tag %}
+<body>
+{% endblock %}
+<header>
+	<section id="header-top" class="container">
+
+		<ul class="nav justify-content-end">
+			{% if page.page.url is defined and page.page.url matches '%^/companies%' %}
+				{% if app.user %}
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+						   aria-haspopup="true" aria-expanded="false">Bonjour {{ app.user.firstname }}</a>
+						<div class="dropdown-menu dropdown-menu-right">
+							{% if is_granted('ROLE_JOBINGE_ENTREPRISE') %}
+								<a class="dropdown-item"
+								   href="{{ path('jobinge.accountEntreprises.index') }}">{% trans %}
+										jobinge.companies.account.account{% endtrans %}</a>
+							{% endif %}
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="{{ path('fos_user_security_logout') }}">Se déconnecter</a>
+						</div>
+					</li>
+				{% else %}
+
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('fos_user_security_login') }}">{% trans %}
+								jobinge.login{% endtrans %}</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('jobinge.registrationEntreprise.register') }}">{% trans %}
+								jobinge.register{% endtrans %}</a>
+					</li>
+				{% endif %}
+			{% endif %}
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+				   aria-expanded="false"><i class="fa fa-globe"></i></a>
+				<div class="dropdown-menu dropdown-menu-right">
+					<h6 class="dropdown-header">{% trans %}jobinge.companies{% endtrans %}</h6>
+					<a class="dropdown-item" href="/fr/companies">Français</a>
+					<a class="dropdown-item" href="/en/companies">English</a>
+					<div class="dropdown-divider"></div>
+					<h6 class="dropdown-header">{% trans %}jobinge.students{% endtrans %}</h6>
+					<a class="dropdown-item" href="/fr/students">Français</a>
+					<a class="dropdown-item" href="/en/students">English</a>
+				</div>
+			</li>
+
+		</ul>
+	</section>
+	<section id="header-main">
+		<div class="container">
+			<nav class="navbar navbar-expand-lg">
+				<a class="navbar-brand" href="/">
+					{% image output="img/logo_jobinge.png"
+						'@JOBINGESiteBundle/Resources/public/img/logo.png' %}
+						<img src="{{ asset_url }}" alt="Logo"/>
+					{% endimage %}
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse"
+				        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+				        aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+					{{ knp_menu_render('mainJOBINGE', {'currentClass': 'active', 'template': 'JOBINGESiteBundle:menu:main_menu.html.twig'}) }}
+				</div>
+			</nav>
+
+
+		</div>
+	</section>
+	{% block page_header_bottom %}
+	{% endblock %}
+</header>
+
+
+<div class="container" id="content">
+	<div class="row">
+		<div class="col-lg-12">
+			{% block sonata_page_breadcrumb %}
+				{{ sonata_page_breadcrumb() }}
+			{% endblock %}
+			{% block page_content %}
+
+			{% endblock %}
+			{% block content %} {% endblock %}
+		</div>
+	</div>
+</div>
+
+
+<footer class="footer">
+	<section class="footer-main">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-md-6">
+
+				</div>
+				<div class="col-6 col-md-3">
+					<h2>Suivez-nous</h2>
+					<a href="https://www.facebook.com/aees.be" target="_blank"><i class="fa fa-facebook-official fa-3x"
+					                                                              aria-hidden="true"></i></a>
+				</div>
+				<div class="col-6 col-md-3">
+					<address>
+						<h2>A.E.E.S ASBL</h2><br>
+						Institut Montefiore (ULiège, B28)<br>
+						Allée de la découverte, 10<br>
+						4000 Liège<br>
+						<abbr title="Telephone">T:</abbr> +32 04 366 92 78
+					</address>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="footer-copyright">
+		<div class="container">
+			<p>© 2017 AEES, Website by Andrew Sassoye.</p>
+		</div>
+	</section>
+</footer>
+
+{% block sonata_page_javascripts %}
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+	        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	        crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+	        integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+	        crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+	        integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+	        crossorigin="anonymous"></script>
+	<script>
+       $(function () {
+           $('[data-toggle="tooltip"]').tooltip()
+       })
+	</script>
+{% endblock %}
+
+
+</body>
+</html>

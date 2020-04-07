@@ -1,0 +1,61 @@
+{#
+
+ Copyright (C) 2017 Andrew SASSOYE
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, version 3.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+#}
+
+{% if site.host == 'jobinge.be' %}
+	{% set template = ':jobinge:base.html.twig' %}
+{% else %}
+	{% set template = ':aees:base.html.twig' %}
+{% endif %}
+
+{% extends template %}
+
+{% block sonata_page_body_tag %}
+	{{ parent() }}
+{% endblock %}
+
+{% block sonata_page_javascripts %}
+	{{ parent() }}
+{% endblock %}
+
+{% block page_header_bottom %}
+	{{ sonata_page_render_container('header', page) }}
+{% endblock %}
+
+{% block page_content %}
+	<div class="row">
+		<div class="col-md-12">
+			{{ sonata_page_render_container('above', page) }}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+			{{ sonata_page_render_container('col1', page) }}
+		</div>
+		<div class="col-md-4">
+			{{ sonata_page_render_container('col2', page) }}
+		</div>
+		<div class="col-md-4">
+			{{ sonata_page_render_container('col3', page) }}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			{{ sonata_page_render_container('below', page) }}
+		</div>
+	</div>
+{% endblock %}

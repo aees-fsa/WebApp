@@ -1,0 +1,169 @@
+{#
+
+ Copyright (C) 2017 Andrew SASSOYE
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, version 3.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+#}
+
+{% if inscription is defined and inscription is not null %}
+	<div class="card border-success mb-3">
+		<div class="card-body text-success">
+			<h4 class="card-title">{% trans %}jobinge.companies.account.inscriptions.yes{% endtrans %}</h4>
+		</div>
+	</div>
+	{% if inscription.confirmProfile is null %}
+		<div class="card border-danger mb-3">
+			<div class="card-body text-danger">
+				<h4 class="card-title">{% trans %}Une action de votre part est requise.{% endtrans %}</h4>
+				<p class="card-text">
+					Pour pouvoir générer notre brochure, nous avons besoin que vous complétiez votre profil entreprise. Si
+					celui-ci est déjà complété, veuillez confirmer que vous avez bien vérifié les informations enregistrées.
+				</p>
+				<a class="btn btn-danger" href="{{ path('jobinge.accountEntreprises.company') }}">{% trans %}
+						Compléter les informations{% endtrans %}</a>
+				<a class="btn btn-success"
+				   href="{{ path('jobinge.accountEntreprises.registrations.confirmProfile') }}">{% trans %}
+						Je confirme avoir complété correctement les informations.{% endtrans %}</a>
+			</div>
+		</div>
+	{% endif %}
+{% else %}
+	<div class="card border-warning mb-3">
+		<div class="card-body text-warning">
+			<h4 class="card-title">{% trans %}jobinge.companies.account.inscriptions.no{% endtrans %}</h4>
+			<a class="btn btn-warning" href="{{ path('jobinge.accountEntreprises.registrations.new') }}">{% trans %}
+					jobinge.register{% endtrans %}</a>
+		</div>
+	</div>
+{% endif %}
+
+
+
+{% for flash in app.session.flashBag.get('jobinge.account.success') %}
+	<div class="alert alert-success alert-dismissible fade show" role="alert">
+		{{ flash }}
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+{% endfor %}
+
+<div class="row">
+	<div class="col-md-4">
+
+		<div class="card">
+			<div class="card-body">
+				<div class="row">
+					<div class="col-2">
+						<i class="fa  fa-3x fa-building" aria-hidden="true"></i>
+					</div>
+					<div class="col-10">
+						<h4>{% trans %}Mon Entreprise{% endtrans %}</h4>
+						<p>{{ company.nom }} <br>
+							{{ company.adresseSiege }} <br>
+							{{ company.postalSiege }} {{ company.villeSiege }}</p>
+						<a href="{{ path('jobinge.accountEntreprises.company') }}" class="btn btn-primary btn-sm float-right"
+						   aria-disabled="true">{% trans %}
+								jobinge.companies.account.modifier{% endtrans %}</a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+	<div class="col-md-4">
+
+		<div class="card">
+			<div class="card-body">
+				<div class="row">
+					<div class="col-2">
+						<i class="fa  fa-3x fa-map-marker" aria-hidden="true"></i>
+					</div>
+					<div class="col-10">
+						<h4>{% trans %}jobinge.companies.account.facturation{% endtrans %}</h4>
+						<p>{{ company.nom }} <br>
+							{{ company.adresseSiege }} <br>
+							{{ company.postalSiege }} {{ company.villeSiege }}</p>
+						<a href="#" class="btn btn-primary btn-sm float-right disabled" aria-disabled="true">{% trans %}
+								jobinge.companies.account.modifier{% endtrans %}</a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+	<div class="col-md-4">
+		<div class="card">
+			<div class="card-body">
+				<div class="row">
+					<div class="col-2">
+						<i class="fa  fa-3x fa-user" aria-hidden="true"></i>
+					</div>
+					<div class="col-10">
+						<h4>{% trans %}jobinge.companies.account.account{% endtrans %}</h4>
+						<p> {{ app.user.username }} <br>
+							{{ app.user.firstname }} {{ app.user.lastname }}<br>
+							{{ app.user.email }} <br></p>
+						<a href="#" class="btn btn-primary btn-sm float-right disabled" aria-disabled="true">{% trans %}
+								jobinge.companies.account.modifier{% endtrans %}</a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+</div>
+<hr class="my-4">
+<div class="row">
+	<div class="col-md-4">
+		<div class="card">
+			<div class="card-body">
+				<div class="row">
+					<div class="col-2">
+						<i class="fa  fa-3x fa-address-card" aria-hidden="true"></i>
+					</div>
+					<div class="col-10">
+						<h4>{% trans %}jobinge.companies.account.inscriptions{% endtrans %}</h4>
+						<a href="{{ path('jobinge.accountEntreprises.registrations') }}"
+						   class="btn btn-primary btn-sm float-right">{% trans %}
+								jobinge.companies.account.aller{% endtrans %}</a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+	<div class="col-md-4">
+		<div class="card">
+			<div class="card-body">
+				<div class="row">
+					<div class="col-2">
+						<i class="fa fa-3x fa-money" aria-hidden="true"></i>
+					</div>
+					<div class="col-10">
+						<h4>{% trans %}jobinge.companies.account.factures{% endtrans %}</h4>
+						<a href="#" class="btn btn-primary btn-sm float-right disabled" aria-disabled="true">{% trans %}
+								jobinge.companies.account.aller{% endtrans %}</a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+</div>

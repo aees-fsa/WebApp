@@ -1,0 +1,188 @@
+##
+# Copyright (C) 2017 Andrew SASSOYE
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, version 3.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+##
+sonata_admin:
+    # default value, change it to sonata.admin.security.handler.acl to use ACL
+    security:
+        handler: sonata.admin.security.handler.acl
+        # acl security information
+        information:
+            GUEST:    [VIEW, LIST]
+            STAFF:    [EDIT, LIST, CREATE]
+            EDITOR:   [OPERATOR, EXPORT]
+            ADMIN:    [MASTER]
+        # permissions not related to an object instance and also to be available when objects do not exist
+        # the DELETE admin permission means the user is allowed to batch delete objects
+        admin_permissions: [CREATE, LIST, DELETE, UNDELETE, EXPORT, OPERATOR, MASTER]
+        # permission related to the objects
+        object_permissions: [VIEW, EDIT, DELETE, UNDELETE, OPERATOR, MASTER, OWNER]
+
+    title: Management System
+    title_logo: logo_title.png
+    options:
+        html5_validate: false # does not use html5 validation
+        pager_links: 5        # pager max links to display
+        use_bootlint: %kernel.debug%
+
+    templates:
+        # default global templates
+        # the layout template include javascript/stylesheet to the formatter bundle,
+        # if you don't need it use the default one: SonataAdminBundle::standard_layout.html.twig
+        layout:  SonataAdminBundle::standard_layout.html.twig
+        ajax:    SonataAdminBundle::ajax_layout.html.twig
+
+        # default value if done set, actions templates, should extends a global templates
+        list:    SonataAdminBundle:CRUD:list.html.twig
+        show:    SonataAdminBundle:CRUD:show.html.twig
+        edit:    SonataAdminBundle:CRUD:edit.html.twig
+
+    dashboard:
+        #        blocks:
+        #            - { position: left, type: sonata.admin.block.admin_list }
+        #            - { position: right, type: sonata.admin_doctrine_orm.block.audit}
+        #            -
+        #                class:    col-lg-3 col-xs-6
+        #                position: top
+        #                type:     sonata.admin.block.stats
+        #                settings:
+        #                    code: sonata.news.admin.comment
+        #                    icon: fa-comments
+        #                    text: Open Comment
+        #                    filters:
+        #                        status: { type: 3, value: 0 } # 3 => NumberType::TYPE_EQUAL
+        #
+        #            -
+        #                class:    col-lg-3 col-xs-6
+        #                position: top
+        #                type:     sonata.admin.block.stats
+        #                settings:
+        #                    code:  sonata.order.admin.order
+        #                    icon:  fa-shopping-cart
+        #                    text:  New Orders
+        #                    color: bg-red
+        #                    filters:
+        #                        status: { type: 3, value: 0 } # 3 => NumberType::TYPE_EQUAL
+        #
+        #            -
+        #                class:    col-lg-3 col-xs-6
+        #                position: top
+        #                type:     sonata.admin.block.stats
+        #                settings:
+        #                    code:  sonata.customer.admin.customer
+        #                    icon:  fa-users
+        #                    text:  Customers
+        #                    color: bg-green
+        #
+        #            -
+        #                class:    col-lg-3 col-xs-6
+        #                position: top
+        #                type:     sonata.admin.block.stats
+        #                settings:
+        #                    code:  sonata.page.admin.page
+        #                    icon:  fa-magic
+        #                    text:  Edited Pages
+        #                    color: bg-yellow
+        #                    filters:
+        #                        edited: { value: 1 }
+        #
+        #            - { roles: [ROLE_SUPER_ADMIN], position: left, type: sonata.block.service.text, settings: { content: "<div class='panel panel-default'><div class='panel-heading'><h3 class='panel-title'>Welcome!</h3></div><div class='panel-body'>You can customize this dashboard by editing the <code>sonata_admin.yml</code> file. The current dashboard presents the recent items from the NewsBundle and a non-statistical e-commerce information.</div></div>"} }
+        ##            - { position: left, type: sonata.timeline.block.timeline, settings: { context: SONATA_ADMIN, max_per_page: 25 }}
+        #            - { position: left, type: sonata.news.block.recent_posts, settings: { title: Recent Posts, number: 7, mode: admin }}
+        #            - { position: left, type: sonata.news.block.recent_comments, settings: { title: Recent Comments, number: 7, mode: admin }}
+        #            - { position: right, type: sonata.order.block.recent_orders, settings: { title: Recent Orders, number: 5, mode: admin }}
+        #            - { position: right, type: sonata.customer.block.recent_customers, settings: { title: Recent Customers, number: 5, mode: admin }}
+        ##            - { position: right, type: sonata.block.service.rss, settings: { title: Sonata Project's Feeds, url: https://sonata-project.org/blog/archive.rss, template: SonataAdminBundle:Block:block_rss_dashboard.html.twig }}
+        #
+        #
+        #
+        groups:
+            sonata.admin.group.media:
+                label:           Media
+                icon:            '<i class="fa fa-news"></i>'
+                items:
+                    - sonata.media.admin.media
+
+            sonata.admin.group.news:
+                label: "Ingénu"
+                items:
+                    - sonata.news.admin.post
+
+            sonata.admin.group.classification:
+                label:           sonata_classification
+                label_catalogue: SonataClassificationBundle
+                icon:            '<i class="fa fa-tags"></i>'
+                items:
+                    - sonata.classification.admin.category
+                    - sonata.classification.admin.tag
+                    - sonata.classification.admin.collection
+                    - sonata.classification.admin.context
+
+
+
+            jobinge.admin.group.forum:
+                label: Forum Entreprises
+                icon: '<i class="fa fa-building"></i>'
+                items:
+                    - jobinge.admin.forum
+                    - jobinge.admin.masters
+                    - jobinge.admin.packs
+                    - jobinge.admin.entreprises
+                    - jobinge.admin.inscription
+                    - jobinge.admin.conferences
+                    - jobinge.admin.cv
+
+            sonata.admin.group.site_builder:
+                label:           Site Builder
+                label_catalogue: SonataDemoBundle
+                icon:            '<i class="fa fa-puzzle-piece"></i>'
+                items:
+                    - sonata.page.admin.page
+                    - sonata.page.admin.site
+
+            sonata.admin.group.administration:
+                label:           sonata_administration
+                label_catalogue: SonataAdminBundle
+                icon:            '<i class="fa fa-cogs"></i>'
+                items:
+                    - sonata.user.admin.user
+                    - sonata.user.admin.group
+                    - sonata.notification.admin.message
+
+            sonata.admin.group.votes:
+                label: Votes
+                items:
+                    - aees_vote.admin.votesession
+
+
+
+
+
+    show_mosaic_button:   true
+
+    assets:
+        extra_javascripts:
+            - bundles/sonatapage/sonata-page.back.min.js
+            - bundles/ivoryckeditor/ckeditor.js
+            - bundles/sonataformatter/vendor/markitup-markitup/markitup/jquery.markitup.js
+            - bundles/sonataformatter/markitup/sets/markdown/set.js
+            - bundles/sonataformatter/markitup/sets/html/set.js
+            - bundles/sonataformatter/markitup/sets/textile/set.js
+
+        extra_stylesheets:
+            - bundles/sonatapage/sonata-page.back.min.css
+            - bundles/sonataformatter/markitup/skins/sonata/style.css
+            - bundles/sonataformatter/markitup/sets/markdown/style.css
+            - bundles/sonataformatter/markitup/sets/html/style.css
+            - bundles/sonataformatter/markitup/sets/textile/style.css

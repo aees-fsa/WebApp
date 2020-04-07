@@ -1,0 +1,54 @@
+{#
+
+ Copyright (C) 2017 Andrew SASSOYE
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, version 3.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+#}
+
+<h2>14 Mars 2018</h2>
+<div class="row">
+	{% for inscrirption in inscriptions1 %}
+		<div class="col-lg-2 col-md-3 col-6">
+			<div class="company" data-toggle="tooltip" title="{{ inscrirption.nom }}">
+				<a href="{{ path('jobinge_students_jobfair_show', {'slug': inscrirption.nomSlug}) }}">
+					{% if inscrirption.logo is defined and inscrirption.logo is not null %}
+						<img src="{% path inscrirption.logo, 'reference' %}" alt="{{ inscrirption.nom }}">
+					{% else %}
+						<p>{{ inscrirption.nom }}</p>
+						<img src="{% path 483, 'reference' %}">
+					{% endif %}
+				</a>
+			</div>
+		</div>
+	{% endfor %}
+</div>
+
+
+<h2>15 Mars 2018</h2>
+<div class="row">
+	{% for inscrirption in inscriptions2 %}
+		<div class="col-lg-2 col-md-3 col-6">
+			<div class="company" data-toggle="tooltip" title="{{ inscrirption.nom }}">
+				<a href="{{ path('jobinge_students_jobfair_show', {'slug': inscrirption.nomSlug}) }}">
+					{% if inscrirption.logo is defined and inscrirption.logo is not null %}
+						<img src="{% path inscrirption.logo, 'reference' %}" alt="{{ inscrirption.nom }}">
+					{% else %}
+						<p>{{ inscrirption.nom }}</p>
+						<img src="{% path 483, 'reference' %}">
+					{% endif %}
+				</a>
+			</div>
+		</div>
+	{% endfor %}
+</div>

@@ -1,0 +1,61 @@
+##
+# Copyright (C) 2017 Andrew SASSOYE
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, version 3.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+##
+services:
+    aees_vote.admin.votesession:
+        class: AEES\VoteBundle\Admin\VoteSessionAdmin
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: "Votes", label: "Session de vote"}
+        arguments:
+            - ~
+            - AEES\VoteBundle\Entity\VoteSession
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+            - [ addChild, ["@aees_vote.admin.votepeople"]]
+            - [ addChild, ["@aees_vote.admin.votelist"]]
+
+    aees_vote.admin.votepeople:
+        class: AEES\VoteBundle\Admin\VotePeopleAdmin
+        tags:
+            - {name: sonata.admin, manager_type: orm, show_in_dashboard: false}
+        arguments:
+            - ~
+            - AEES\VoteBundle\Entity\VotePeople
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+
+    aees_vote.admin.votelist:
+        class: AEES\VoteBundle\Admin\VoteListAdmin
+        tags:
+            - {name: sonata.admin, manager_type: orm, show_in_dashboard: false}
+        arguments:
+            - ~
+            - AEES\VoteBundle\Entity\VoteList
+            - AEESVoteBundle:VoteList
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+
+    aees_vote.admin.votelistchoice:
+        class: AEES\VoteBundle\Admin\VoteListChoiceAdmin
+        tags:
+            - {name: sonata.admin, manager_type: orm, show_in_dashboard: false}
+        arguments:
+            - ~
+            - AEES\VoteBundle\Entity\VoteListChoice
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]

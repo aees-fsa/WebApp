@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (C) 2017 Andrew SASSOYE
+  ~
+  ~  This program is free software: you can redistribute it and/or modify
+  ~  it under the terms of the GNU Affero General Public License as
+  ~  published by the Free Software Foundation, version 3.
+  ~
+  ~  This program is distributed in the hope that it will be useful,
+  ~  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~  GNU Affero General Public License for more details.
+  ~
+  ~  You should have received a copy of the GNU Affero General Public License
+  ~  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  ~
+  -->
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="fr" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="menu.students.home">
+                <source>menu.students.home</source>
+                <target>
+                    Accueil
+                </target>
+            </trans-unit>
+
+            <trans-unit id="menu.students.forum">
+                <source>menu.students.forum</source>
+                <target>Forum Entreprises</target>
+            </trans-unit>
+
+            <trans-unit id="menu.students.offers">
+                <source>menu.students.offers</source>
+                <target>Offres</target>
+            </trans-unit>
+
+            <trans-unit id="menu.students.events">
+                <source>menu.students.events</source>
+                <target>Événements</target>
+            </trans-unit>
+
+            <trans-unit id="menu.students.cv">
+                <source>menu.students.cv</source>
+                <target>CV</target>
+            </trans-unit>
+
+            <trans-unit id="menu.students.contact">
+                <source>menu.students.contact</source>
+                <target>Contact</target>
+            </trans-unit>
+
+            <trans-unit id="menu.companies.home">
+                <source>menu.companies.home</source>
+                <target>Accueil</target>
+            </trans-unit>
+
+            <trans-unit id="menu.companies.forum">
+                <source>menu.companies.forum</source>
+                <target>Forum Entreprises</target>
+            </trans-unit>
+
+            <trans-unit id="menu.companies.formulas">
+                <source>menu.companies.formulas</source>
+                <target>Nos Formules</target>
+            </trans-unit>
+
+            <trans-unit id="menu.companies.masters">
+                <source>menu.companies.masters</source>
+                <target>Les Masters</target>
+            </trans-unit>
+
+            <trans-unit id="menu.companies.contact">
+                <source>menu.companies.contact</source>
+                <target>Contact</target>
+            </trans-unit>
+
+
+        </body>
+    </file>
+</xliff>

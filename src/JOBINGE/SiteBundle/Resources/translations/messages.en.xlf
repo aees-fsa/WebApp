@@ -1,0 +1,305 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (C) 2017 Andrew SASSOYE
+  ~
+  ~  This program is free software: you can redistribute it and/or modify
+  ~  it under the terms of the GNU Affero General Public License as
+  ~  published by the Free Software Foundation, version 3.
+  ~
+  ~  This program is distributed in the hope that it will be useful,
+  ~  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~  GNU Affero General Public License for more details.
+  ~
+  ~  You should have received a copy of the GNU Affero General Public License
+  ~  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  ~
+  -->
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="fr" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="jobinge.students">
+                <source>jobinge.students</source>
+                <target>
+                    Student
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.students.iam">
+                <source>jobinge.students.iam</source>
+                <target>
+                    I am a student
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.students.go">
+                <source>jobinge.students.go</source>
+                <target>
+                    Go to students platform
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.companies">
+                <source>jobinge.companies</source>
+                <target>
+                    Companies
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.companies.iam">
+                <source>jobinge.companies.iam</source>
+                <target>
+                    I am a company
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.companies.gp">
+                <source>jobinge.companies.go</source>
+                <target>
+                    Go to companies platform
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.login">
+                <source>jobinge.login</source>
+                <target>
+                    Sign in
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.register">
+                <source>jobinge.register</source>
+                <target>
+                    Register
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.register.step1.title">
+                <source>jobinge.register.step1.title</source>
+                <target>
+                    Step 1: Registration of your company
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.register.step1.description">
+                <source>jobinge.register.step1.description</source>
+                <target>
+                    This first step consists of a form which contains the main information about your company.
+                    It is very important to pay attention to this step and complete the form correctly. No one change
+                    would be possible after the registration.
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.register.step2.title">
+                <source>jobinge.register.step2.title</source>
+                <target>
+                    Step 2: Registration of contact person
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.register.step2.description">
+                <source>jobinge.register.step2.description</source>
+                <target>
+                    This step consists of a form which contains the main information about contact person.
+                    In addition, you have to choose one password and one login. This one is required for the futur
+                    login.
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.register.step3.title">
+                <source>jobinge.register.step3.title</source>
+                <target>
+                    Step 3: Confirmation mail
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.register.step3.description">
+                <source>jobinge.register.step3.description</source>
+                <target>
+                    When you accurately fill in the two forms, you will receive a confirmation mail. After the reception
+                    of this mail you can subscribe your company at our jobdays.
+                    If you don't receive the confirmation mail, check your spam box before contacting us.
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.register.terms">
+                <source>jobinge.register.terms</source>
+                <target>
+                    General conditions of use
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.register.terms.accept">
+                <source>jobinge.register.terms.accept</source>
+                <target>
+                    I have read and accepted the general conditions of use
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.register.next">
+                <source>jobinge.register.next</source>
+                <target>
+                    Next
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.register.prev">
+                <source>jobinge.register.prev</source>
+                <target>
+                    Previous
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.register.company.general">
+                <source>jobinge.register.company.general</source>
+                <target>
+                    General Information
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.register.company.name">
+                <source>jobinge.register.company.name</source>
+                <target>
+                    Name of your company
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.register.company.tva">
+                <source>jobinge.register.company.tva</source>
+                <target>
+                    VAT number
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.register.company.address">
+                <source>jobinge.register.company.address</source>
+                <target>
+                    Company's head office address
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.register.company.zip">
+                <source>jobinge.register.company.zip</source>
+                <target>
+                    Postal Code
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.register.company.ville">
+                <source>jobinge.register.company.ville</source>
+                <target>
+                    City/Locality
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.register.company">
+                <source>jobinge.register.company</source>
+                <target>
+                    Contact person
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.register.company.country">
+                <source>jobinge.register.company.country</source>
+                <target>
+                    Country
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.register.contact.mail">
+                <source>jobinge.register.contact.mail</source>
+                <target>
+                    Mail of contact person
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.register.contact.prenom">
+                <source>jobinge.register.contact.prenom</source>
+                <target>
+                    First Name
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.register.contact.nom">
+                <source>jobinge.register.contact.nom</source>
+                <target>
+                    Last Name
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.register.contact.phone">
+                <source>jobinge.register.contact.phone</source>
+                <target>
+                    Phone number
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.register.contact.locale">
+                <source>jobinge.register.contact.locale</source>
+                <target>
+                    Language for correspondence
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.register.contact.password">
+                <source>jobinge.register.contact.password</source>
+                <target>
+                    Password
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.register.contact.password.repeat">
+                <source>jobinge.register.contact.password.repeat</source>
+                <target>
+                    Repeat the password
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.companies.account.company">
+                <source>jobinge.companies.account.company</source>
+                <target>
+                    Company
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.companies.account.facturation">
+                <source>jobinge.companies.account.facturation</source>
+                <target>
+                    Billing Adress
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.companies.account.account">
+                <source>jobinge.companies.account.account</source>
+                <target>
+                    My Account
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.companies.account.inscriptions">
+                <source>jobinge.companies.account.inscriptions</source>
+                <target>
+                    My Registration
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.companies.account.inscriptions.no">
+                <source>jobinge.companies.account.inscriptions.no</source>
+                <target>
+                    You don't have yet subscribe your company for the jobday.
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.companies.account.inscriptions.yes">
+                <source>jobinge.companies.account.inscriptions.yes</source>
+                <target>
+                    We are treating your registration
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.companies.account.inscriptions.dpssoer">
+                <source>jobinge.companies.account.inscriptions.dossier</source>
+                <target>
+                    File Number
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.companies.account.inscriptions.nom">
+                <source>jobinge.companies.account.inscriptions.nom</source>
+                <target>
+                    Name
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.companies.account.inscriptions.status">
+                <source>jobinge.companies.account.inscriptions.status</source>
+                <target>
+                    Status
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.companies.account.inscriptions.status.attente">
+                <source>jobinge.companies.account.inscriptions.status.attente</source>
+                <target>
+                    Waiting for validation
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.companies.account.factures">
+                <source>jobinge.companies.account.factures</source>
+                <target>
+                    My bills
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.companies.account.modifier">
+                <source>jobinge.companies.account.modifier</source>
+                <target>
+                    Change
+                </target>
+            </trans-unit>
+            <trans-unit id="jobinge.companies.account.aller">
+                <source>jobinge.companies.account.aller</source>
+                <target>
+                    Show
+                </target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

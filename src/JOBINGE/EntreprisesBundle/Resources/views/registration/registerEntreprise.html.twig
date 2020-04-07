@@ -1,0 +1,107 @@
+{#
+
+ Copyright (C) 2017 Andrew SASSOYE
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, version 3.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+#}
+<div class="jumbotron">
+	<h1>{% trans %}jobinge.register.step1.title{% endtrans %}</h1>
+	<p>{% trans %}jobinge.register.step1.description{% endtrans %}</p>
+</div>
+
+{{ form_start(form) }}
+{{ form_errors(form) }}
+
+
+<div class="row">
+	<div class="col-md-6 mb-3">
+		<div class="card">
+			<div class="card-header">
+				<h4>{% trans %}jobinge.register.company.general{% endtrans %}</h4>
+			</div>
+			<div class="card-body">
+				{{ form_row(form.nom) }}
+				{{ form_row(form.tva) }}
+			</div>
+		</div>
+
+	</div>
+	<div class="col-md-6 mb-3">
+		<div class="card">
+			<div class="card-header">
+				<h4>{% trans %}jobinge.register.company.address{% endtrans %}</h4>
+			</div>
+			<div class="card-body">
+				<div class="form-group">
+					{{ form_label(form.adresseSiege, "jobinge.register.company.address", {'label_attr': {'class': 'form-control-label'}}) }}
+					{{ form_widget(form.adresseSiege, {'attr': {
+						'class': 'form-control',
+						'placeholder': 'Allée de la découverte, 10'
+					}}) }}
+
+				</div>
+				<div class="row">
+					<div class="form-group col-md-4">
+						{{ form_label(form.postalSiege, "jobinge.register.company.zip", {
+							'label_attr': {
+								'class': 'form-control-label',
+							}
+						}) }}
+						{{ form_widget(form.postalSiege, {'attr': {
+							'class': 'form-control',
+							'placeholder': '4000'
+
+						}}) }}
+					</div>
+					<div class="form-group col-md-8">
+						{{ form_label(form.villeSiege) }}
+						{{ form_widget(form.villeSiege, {'attr': {
+							'class': 'form-control',
+							'placeholder': 'Liège'
+
+						}}) }}
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					{{ form_label(form.paysSiege) }}
+					{{ form_widget(form.paysSiege, {'attr': {
+						'class': 'form-control',
+						'placeholder': 'Belgique'
+					}}) }}
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+	<div class="col-12">
+		<div class="card">
+			<div class="card-body">
+				{{ form_rest(form) }}
+
+				<div class="form-group">
+					<button class="btn btn-primary">
+						{% trans %}jobinge.register.next{% endtrans %}
+					</button>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+{{ form_end(form) }}

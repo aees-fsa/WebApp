@@ -1,0 +1,105 @@
+{#
+
+ Copyright (C) 2017 Andrew SASSOYE
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, version 3.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+#}
+
+<div class="row">
+   <div class="col-md-3">
+      <div class="company" data-toggle="tooltip" title="{{ company.nom }}">
+         <a href="{{ path('jobinge_students_jobfair_show', {'slug': company.nomSlug}) }}">
+            {% if company.logo is defined and company.logo is not null %}
+               <img src="{% path company.logo, 'reference' %}" alt="{{ company.nom }}">
+            {% else %}
+               <p>{{ company.nom }}</p>
+               <img src="{% path 483, 'reference' %}">
+            {% endif %}
+         </a>
+      </div>
+      <h4>{{ company.nom }}</h4>
+
+      {% if "http://" in company.siteweb or "https://" in company.siteweb %}
+         <a href="{{ company.siteWeb }}" target="_blank">
+            {{ company.siteWeb }}
+         </a>
+      {% else %}
+         <a href="//{{ company.siteWeb|url_encode }}" target="_blank">
+            {{ company.siteWeb }}
+         </a>
+      {% endif %}
+
+      {% if company.pointsForts is defined and company.pointsForts is not null %}
+         <address>
+            {{ company.implementation|capitalize }}
+         </address>
+      {% endif %}
+
+   </div>
+   <div class="col-md-9">
+      {% if company.presentation is defined and company.presentation is not null %}
+         <h4>
+            Présentation de l’entreprise
+         </h4>
+         <p>
+            {{ company.presentation }}
+         </p>
+      {% endif %}
+
+      {% if company.secteur is defined and company.secteur is not null %}
+         <h4>
+            Secteur d’activité
+         </h4>
+         <p>
+            {{ company.secteur }}
+         </p>
+      {% endif %}
+
+      {% if company.pointsForts is defined and company.pointsForts is not null %}
+         <h4>
+            Points forts de l'entreprise
+         </h4>
+         <p>
+            {{ company.pointsForts }}
+         </p>
+      {% endif %}
+
+      {% if company.profilsRecherches is defined and company.profilsRecherches is not null %}
+         <h4>
+            Profils recherchés
+         </h4>
+         <p>
+            {{ company.profilsRecherches }}
+         </p>
+      {% endif %}
+
+
+      {% if company.masters is defined and company.masters is not empty %}
+         <h4>
+            Masters
+         </h4>
+         <p>
+         <ul>
+            {% for master in company.masters %}
+               <li>{{ master.nom }}</li>
+            {% endfor %}
+         </ul>
+
+
+         </p>
+      {% endif %}
+
+
+   </div>
+</div>

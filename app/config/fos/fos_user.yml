@@ -1,0 +1,59 @@
+##
+# Copyright (C) 2017 Andrew SASSOYE
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, version 3.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+##
+fos_user:
+    db_driver:      orm # can be orm or odm
+    firewall_name:  main
+    user_class:     AEES\UserBundle\Entity\User
+
+    service:
+        mailer: fos_user.mailer.twig_swift
+
+    registration:
+        confirmation:
+            enabled: true
+            from_email:
+                sender_name: A.E.E.S. ASBL
+                address: registration@accounts.aees.be
+            template: :mail:register.html.twig
+
+        form:
+            type: AEES\UserBundle\Form\Type\RegistrationFormType
+
+    resetting:
+        email:
+            from_email:
+                sender_name: A.E.E.S. ASBL
+                address: resetting@accounts.aees.be
+
+
+    group:
+        group_class:   AEES\UserBundle\Entity\Group
+        group_manager: sonata.user.orm.group_manager                   # If you're using doctrine orm (use sonata.user.mongodb.group_manager for mongodb)
+
+    service:
+        user_manager: sonata.user.orm.user_manager                      # If you're using doctrine orm (use sonata.user.mongodb.user_manager for mongodb)
+
+    from_email:
+        address: noreply@aees.be
+        sender_name: A.E.E.S. ASBL
+
+
+
+doctrine:
+
+    dbal:
+        types:
+            json: Sonata\Doctrine\Types\JsonType

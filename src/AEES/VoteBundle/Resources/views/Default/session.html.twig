@@ -1,0 +1,41 @@
+{#
+
+ Copyright (C) 2017 Andrew SASSOYE
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, version 3.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+#}
+
+<h2>{{ session.name }}</h2>
+<p>{{ session.description }}</p>
+
+{% if lists %}
+	{% for list in lists %}
+		<div class="thumbnail">
+			<div class="caption">
+				<h3><a href="{{ path('aees_vote_list', {'id': list.id}) }}">{{ list.name }}</a>
+					<small>(EN COURS)</small>
+				</h3>
+				<p>{{ list.description }}</p>
+			</div>
+		</div>
+	{% endfor %}
+{% else %}
+	<div class="thumbnail">
+		<div class="caption">
+			<h3> Aucun vote disponible pour l'instant
+			</h3>
+
+		</div>
+	</div>
+{% endif %}

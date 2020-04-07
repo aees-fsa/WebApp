@@ -1,0 +1,256 @@
+{#
+
+ Copyright (C) 2017 Andrew SASSOYE
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, version 3.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+#}
+{%- block sonata_page_html_tag -%}
+<!DOCTYPE html>
+<html {{ sonata_seo_html_attributes() }}>
+{% endblock %}
+{% block sonata_page_head %}
+	<head {{ sonata_seo_head_attributes() }}>
+
+		<!--[if IE]>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+		{{ sonata_seo_title() }}
+		{{ sonata_seo_metadatas() }}
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		{% block sonata_page_stylesheets %}
+			{% block page_stylesheets %} {# Deprecated block #}
+				{% for stylesheet in sonata_page.assets.stylesheets %}
+					<link rel="stylesheet" href="{{ asset(stylesheet) }}" media="all">
+				{% endfor %}
+			{% endblock %}
+		{% endblock %}
+
+		<link rel="apple-touch-icon-precomposed" sizes="57x57" href="{{ asset('apple-touch-icon-57x57.png') }}"/>
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('apple-touch-icon-114x114.png') }}"/>
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('apple-touch-icon-72x72.png') }}"/>
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('apple-touch-icon-144x144.png') }}"/>
+		<link rel="apple-touch-icon-precomposed" sizes="60x60" href="{{ asset('apple-touch-icon-60x60.png') }}"/>
+		<link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset('apple-touch-icon-120x120.png') }}"/>
+		<link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset('apple-touch-icon-76x76.png') }}"/>
+		<link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset('apple-touch-icon-152x152.png') }}"/>
+		<link rel="icon" type="image/png" href="{{ asset('favicon-196x196.png') }}" sizes="196x196"/>
+		<link rel="icon" type="image/png" href="{{ asset('favicon-96x96.png') }}" sizes="96x96"/>
+		<link rel="icon" type="image/png" href="{{ asset('favicon-32x32.png') }}" sizes="32x32"/>
+		<link rel="icon" type="image/png" href="{{ asset('favicon-16x16.png') }}" sizes="16x16}"/>
+		<link rel="icon" type="image/png" href="{{ asset('favicon-128.png') }}" sizes="128x128"/>
+		<meta name="application-name" content="AEES"/>
+		<meta name="msapplication-TileColor" content="#FFFFFF"/>
+		<meta name="msapplication-TileImage" content="{{ asset('mstile-144x144.png') }}"/>
+		<meta name="msapplication-square70x70logo" content="{{ asset('mstile-70x70.png') }}"/>
+		<meta name="msapplication-square150x150logo" content="{{ asset('mstile-150x150.png') }}"/>
+		<meta name="msapplication-wide310x150logo" content="{{ asset('mstile-310x150.png') }}"/>
+		<meta name="msapplication-square310x310logo" content="{{ asset('mstile-310x310.png') }}"/>
+
+
+	</head>
+{% endblock %}
+
+{% block sonata_page_body_tag %}
+<body class="sonata-bc">
+{% endblock %}
+
+{% block sonata_page_container %}
+	{% block page_header %}
+		<header id="header">
+			<div class="header-top">
+				<div class="container">
+					<div class="row">
+						<div class="pull-right navbar-right">
+							{% if app.user %}
+								<div class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+									   aria-haspopup="true" aria-expanded="false">
+										Bonjour {{ app.user.firstname }} <span class="caret"></span>
+									</a>
+									<ul class="dropdown-menu">
+										<!--<li><a href="{{ path('sonata_user_change_password') }}"><i class="fa fa-user"
+                                                                                             aria-hidden="true"></i> Mon
+                                                profil</a></li>
+                                        <li><a href="{{ path('sonata_admin_dashboard') }}"><i class="fa fa-cog"
+                                                                                              aria-hidden="true"></i>
+                                                Administration</a></li>
+                                        <li role="separator" class="divider"></li> -->
+										<li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out"
+										                                                        aria-hidden="true"></i>
+												Se déconnecter</a></li>
+									</ul>
+								</div>
+							{% else %}
+								<a href="{{ path('fos_user_security_login') }}">Se connecter</a>
+							{% endif %}
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="main-nav">
+				<div class="container">
+					<div class="row">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse"
+							        data-target=".navbar-collapse">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand" href="/">
+								<img class="img-responsive" src="{{ asset('img/logo.png') }}" alt="logo">
+							</a>
+
+						</div>
+						<nav class="navbar-collapse collapse">
+							<ul class="nav navbar-nav navbar-right">
+								<li>
+									<a href="/" title="Accueil" class="active">Accueil</a>
+								</li>
+								<li>
+									<a href="/a-propos"
+									   title="A propos">À propos</a>
+								</li>
+								<li class="disabled">
+									<a href=""
+									   title="">Events</a>
+								</li>
+								<li>
+									<a href="/ingenu/"
+									   title="">Ingénu</a>
+								</li>
+								<li>
+									<a href="/contact/"
+									   title="">Contact</a>
+								</li>
+
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</header>
+
+	{% endblock %}
+	{% block page_content %}{% endblock %}
+	{% block page_footer %}
+		<footer>
+			<section class="container">
+				<div class="col-md-6">
+					<h2>Le mot du président</h2>
+					<blockquote>
+						<p>L'AEES c'est comme le sexe, on pourrait croire qu'on peut s'en passer, mais une fois qu'on
+							est dedans qu'est-ce que on est bien!</p>
+						<footer>Jérémie Thiébaut</footer>
+					</blockquote>
+				</div>
+				<div class="col-md-3 col-xs-6">
+					<h2>Suivez-nous</h2>
+					<div class="row" id="social">
+						<div class="col-xs-2">
+							<a href="https://www.facebook.com/aees.be" target="_blank"><i
+										class="fa fa-facebook-official fa-3x" aria-hidden="true"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 col-xs-6">
+					<address>
+						<h2>A.E.E.S ASBL</h2><br>
+						Institut Montefiore (ULg, B-28)<br>
+						Grande Traverse, 10<br>
+						4000 Liège<br>
+						<abbr title="Telephone">T:</abbr> +32 04 366 92 78
+					</address>
+				</div>
+			</section>
+			<section id="copyright">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-9 col-xs-6">
+							<p>© 2017 AEES, Website by Andrew Sassoye.</p>
+						</div>
+						<div class="col-md-3 col-xs-6 text-right">
+							<p><a href="/uploads/media/default/0001/01/6818ace8e377133f23e5eb1f6c0e9b53f2d0385a.pdf"
+							      target="_blank">Règlement d'ordre intérieur</a> - <a
+										href="/uploads/media/default/0001/01/f4db460c2f478883d2f266a633947af9d8e749d5.pdf"
+										target="_blank">Statuts</a></p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+		</footer>
+	{% endblock %}
+{% endblock %}
+
+{% block sonata_page_javascripts %}
+	{% block page_javascripts %} {# Deprecated block #}
+		<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+		<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
+		{% for js in sonata_page.assets.javascripts %}
+		<script src="{{ asset(js) }}"></script>
+		{% endfor %}
+		<script>
+          (function (i, s, o, g, r, a, m) {
+              i['GoogleAnalyticsObject'] = r;
+              i[r] = i[r] || function () {
+                  (i[r].q = i[r].q || []).push(arguments)
+              }, i[r].l = 1 * new Date();
+              a = s.createElement(o),
+                  m = s.getElementsByTagName(o)[0];
+              a.async = 1;
+              a.src = g;
+              m.parentNode.insertBefore(a, m)
+          })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+          ga('create', 'UA-97980983-1', 'auto');
+          ga('send', 'pageview');
+
+		</script>
+	{% endblock %}
+
+{% endblock %}
+
+{% block sonata_page_asset_footer %}
+	{% block page_asset_footer %} {# Deprecated block #}
+		{% if page is defined %}
+		{% if page.javascript is not empty %}
+			<script>
+				{{ page.javascript|raw }}
+			</script>
+		{% endif %}
+		{% if page.stylesheet is not empty %}
+			<style>
+				{{ page.stylesheet|raw }}
+			</style>
+		{% endif %}
+		{% endif %}
+		{#
+			 These includes can be done only at this point as all blocks are loaded,
+			 Limition : this does not work if a global page is loaded from an ESI tag inside a container block
+		#}
+		{{ sonata_block_include_stylesheets('screen', app.request.basePath) }}
+		{{ sonata_block_include_javascripts('screen', app.request.basePath) }}
+	{% endblock %}
+{% endblock %}
+
+<!-- monitoring:3e9fda56df2cdd3b039f189693ab7844fbb2d4f6 -->
+</body>
+</html>

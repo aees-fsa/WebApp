@@ -1,0 +1,131 @@
+{#
+
+ Copyright (C) 2017 Andrew SASSOYE
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, version 3.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+#}
+
+<!DOCTYPE html>
+<html>
+
+
+<head>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+	<title>
+		{% block title %}{% endblock %}
+	</title>
+
+	{% block sonata_page_stylesheets %}
+		{% stylesheets filter="scssphp" output="css/style_jobinge.css"
+			"@JOBINGESiteBundle/Resources/assets/scss/main.scss" %}
+			<link rel="stylesheet" href="{{ asset_url }}">
+		{% endstylesheets %}
+	{% endblock %}
+
+
+</head>
+
+
+<body>
+
+<header>
+	<section id="header-top" class="container">
+
+		<ul class="nav justify-content-end">
+
+			<li class="nav-item">
+				<a class="nav-link" href="https://jobinge.be" role="button" target="_blank">Aller vers jobinge.be</a>
+
+			</li>
+
+
+		</ul>
+	</section>
+	<section id="header-main">
+		<div class="container">
+			<nav class="navbar navbar-expand-lg">
+				<a class="navbar-brand" href="/">
+					{% image output="img/logo_jobinge.png"
+						'@JOBINGESiteBundle/Resources/public/img/logo.png' %}
+						<img src="{{ asset_url }}" alt="Logo"/>
+					{% endimage %}
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse"
+				        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+				        aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+					{% block menu %}
+					{% endblock %}
+
+
+				</div>
+			</nav>
+
+
+		</div>
+	</section>
+	{% block page_header_bottom %}
+	{% endblock %}
+</header>
+
+
+<div class="container" id="content">
+	<div class="row">
+		<div class="col-lg-12">
+			{% block content %}{% endblock %}
+		</div>
+	</div>
+</div>
+
+
+<footer class="footer">
+	<section class="footer-main">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-md-6">
+
+				</div>
+				<div class="col-6 col-md-3">
+					<h2>Suivez-nous</h2>
+					<a href="https://www.facebook.com/aees.be" target="_blank"><i class="fa fa-facebook-official fa-3x"
+					                                                              aria-hidden="true"></i></a>
+				</div>
+				<div class="col-6 col-md-3">
+					<address>
+						<h2>A.E.E.S ASBL</h2><br>
+						Institut Montefiore (ULiège, B28)<br>
+						Allée de la découverte, 10<br>
+						4000 Liège<br>
+						<abbr title="Telephone">T:</abbr> +32 04 366 92 78
+					</address>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="footer-copyright">
+		<div class="container">
+			<p>© 2017 AEES, Website by Andrew Sassoye.</p>
+		</div>
+	</section>
+</footer>
+
+
+</body>
+</html>

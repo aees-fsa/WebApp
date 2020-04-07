@@ -1,0 +1,54 @@
+##
+# Copyright (C) 2017 Andrew SASSOYE
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, version 3.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+##
+sonata_block:
+    context_manager: sonata.page.block.context_manager
+    default_contexts: [sonata_page_bundle]
+
+    http_cache:
+        listener: true
+
+    profiler:
+        enabled: "%kernel.debug%"
+        template: SonataBlockBundle:Profiler:block.html.twig
+        container_types:
+
+    blocks:
+        # enable the SonataAdminBundle block
+        sonata.admin.block.admin_list:
+            contexts: [admin]
+        sonata.admin.block.search_result:
+            contexts: [admin]
+
+        # Builtin Block
+        sonata.block.service.text:
+        sonata.block.service.container:
+        sonata.block.service.rss:
+        sonata.block.service.menu:
+        sonata.block.service.template:
+        sonata.formatter.block.formatter:
+
+        # MediaBundl's blocks
+        sonata.media.block.media:
+        sonata.media.block.gallery:
+        sonata.media.block.feature_media:
+
+        sonata.user.block.menu:
+
+        header.image.block:
+
+        aees.block.slider:
+        aees_page.block.header_image:
+

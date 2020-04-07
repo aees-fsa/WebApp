@@ -1,0 +1,87 @@
+{#
+
+ Copyright (C) 2017 Andrew SASSOYE
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, version 3.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+#}
+
+<div class="jumbotron">
+	<h1>Inscription au {{ forum.nom }}</h1>
+</div>
+
+{{ form_start(form) }}
+<div class="row">
+	<div class="col-12">
+		<div class="card">
+			<div class="card-body">
+				<h2>Formule
+					<small><a href="/fr/companies/formula" target="_blank"><i class="fa fa-info-circle"
+					                                                          aria-hidden="true"></i></a></small>
+				</h2>
+				{{ form_row(form.Pack) }}
+			</div>
+		</div>
+	</div>
+	<div class="col-12">
+		<div class="card">
+			<div class="card-body">
+				<h2>Date</h2>
+				{{ form_widget(form.Date) }}
+			</div>
+		</div>
+	</div>
+	<div class="col-12">
+		<div class="card">
+			<div class="card-body">
+				<h2>Options</h2>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="card">
+							<div class="card-body">
+								{{ form_row(form.Table) }}
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="card">
+							<div class="card-body">
+								{{ form_row(form.repas) }}
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="card">
+							<div class="card-body">
+								{{ form_row(form.brochure) }}
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<div class="col-12">
+		<div class="card">
+			<div class="card-body">
+				{{ form_row(form.Commentaire) }}
+				{{ form_rest(form) }}
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{{ form_end(form) }}

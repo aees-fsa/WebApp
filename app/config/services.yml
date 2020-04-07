@@ -1,0 +1,64 @@
+##
+# Copyright (C) 2017 Andrew SASSOYE
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, version 3.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+##
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/service_container.html
+parameters:
+#    parameter_name: value
+
+
+services:
+
+    security.acl.permission.map:
+        class: Sonata\AdminBundle\Security\Acl\Permission\AdminPermissionMap
+
+    Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler:
+        public:    false
+        arguments:
+            - 'mysql:dbname=sessions'
+            - { db_username: "symfony_sessions", db_password: "*Acyz143" }
+
+    aees.admin.events:
+        class: AppBundle\Admin\EventsAdmin
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: "Content", label: "Events"}
+        arguments:
+            - ~
+            - AppBundle\Entity\Events
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+
+    aees.block.slider:
+        class: AppBundle\Block\SliderBlockService
+        arguments:
+            - aees.block.slider
+            - "@templating"
+            - '@service_container'
+            - '@sonata.media.manager.media'
+        tags:
+            - { name: sonata.block }
+
+    app.menu_builder:
+        class: JOBINGE\SiteBundle\Menu\Builder
+        arguments: ["@knp_menu.factory"]
+
+    app.main_menu:
+        class: Knp\Menu\MenuItem # the service definition requires setting the class
+        factory: ["@app.menu_builder", createMainMenu]
+        arguments: ["@request_stack"]
+        tags:
+            - { name: knp_menu.menu, alias: mainJOBINGE } # The alias is what is used to retrieve the menu
+

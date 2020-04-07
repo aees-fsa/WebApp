@@ -1,0 +1,146 @@
+##
+# Copyright (C) 2017 Andrew SASSOYE
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, version 3.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+##
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/security.html
+security:
+    role_hierarchy:
+        ROLE_ADMIN:       [ROLE_USER, ROLE_SONATA_ADMIN, ROLE_EDIT_USER]
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH, SONATA]
+        SONATA:
+            - ROLE_SONATA_PAGE_ADMIN_PAGE_EDIT  # if you are using acl then this line must be commented
+            - ROLE_SONATA_PAGE_ADMIN_BLOCK_EDIT
+        ROLE_EDIT_USER:
+            - ROLE_SONATA_ADMIN_USER_LIST
+            - ROLE_SONATA_ADMIN_USER_EDIT
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username_email
+
+    firewalls:
+        # Disabling the security for the web debug toolbar, the profiler and Assetic.
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        # -> custom firewall for the admin area of the URL
+        admin:
+            pattern:            /(.*)
+            host: admin\.aees\.be
+            context:            user
+            form_login:
+                provider:       fos_userbundle
+                login_path:     /login
+                use_forward:    false
+                check_path:     /login_check
+                failure_path:   null
+            logout:
+                path:           /logout
+                target:         /login
+            anonymous:          true
+            switch_user: true
+            remember_me:
+                secret:             %secret%        # On définit la clé pour le remember_me (%secret% est un parametre de parameters.yml)
+                lifetime:        604800             # 1 semaine en secondes
+                domain: .aees.be
+                secure: true
+
+        jobinge:
+            pattern:             .*
+            host: jobinge\.be
+            context:             user
+            form_login:
+                provider:       fos_userbundle
+                login_path:     fos_user_security_login
+                use_forward:    false
+                default_target_path:  jobinge.accountEntreprises.index
+                use_referer:    true
+                check_path:     fos_user_security_check
+                failure_path:   null
+            logout:             true
+            anonymous:          true
+            switch_user: true
+            remember_me:
+                secret:             %secret%        # On définit la clé pour le remember_me (%secret% est un parametre de parameters.yml)
+                lifetime:        900             # 15min en secondes
+                secure: true
+                domain: .aees.be
+
+        # -> end custom configuration
+
+        # default login area for standard users
+
+        # This firewall is used to handle the public login area
+        # This part is handled by the FOS User Bundle
+        main:
+            pattern:             .*
+            context:             user
+            form_login:
+                provider:       fos_userbundle
+                login_path:     /login
+                use_forward:    false
+                check_path:     /login_check
+                remember_me:     true
+                failure_path:   null
+            logout:             true
+            anonymous:          true
+            remember_me:
+                secret:             %secret%        # On définit la clé pour le remember_me (%secret% est un parametre de parameters.yml)
+                lifetime:        2592000             # 30 jours en secondes
+                domain: .aees.be
+                secure: true
+
+    access_control:
+
+        # URL of FOSUserBundle which need to be available to anonymous users
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+
+
+        - { path: ^/(fr|en)/login$, role: IS_AUTHENTICATED_ANONYMOUSLY, host: jobinge.be, requires_channel: https }
+        - { path: ^/(fr|en)/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY, host: jobinge.be, requires_channel: https }
+        - { path: ^/(fr|en)/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY, host: jobinge.be, requires_channel: https }
+        - { path: ^/(fr|en)/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY, host: jobinge.be, requires_channel: https }
+        - { path: ^/companies/register, role: IS_AUTHENTICATED_ANONYMOUSLY, host: jobinge.be, requires_channel: https }
+        #- { path: ^/, role: [ROLE_SUPER_ADMIN], host: jobinge.be }
+
+        # Admin login page needs to be accessed without credential
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY, host: admin.aees.be, requires_channel: https }
+        - { path: ^/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY, host: admin.aees.be, requires_channel: https }
+        - { path: ^/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY, host: admin.aees.be, requires_channel: https }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY, host: admin.aees.be, requires_channel: https }
+
+        # Secured part of the site
+        # This config requires being logged for the whole site and having the admin role for the admin part.
+        # Change these rules to adapt them to your needs
+        - { path: ^/, host: admin.aees.be, role: [ROLE_ADMIN, ROLE_SONATA_ADMIN], requires_channel: https }
+        - { path: ^/votes, host: aees.be, role: [ROLE_USER], requires_channel: https }
+        - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+
+
+
+
+    encoders:
+        FOS\UserBundle\Model\UserInterface: sha512
+    acl:
+        connection: default
+
+
+
+
+parameters:
+    security.acl.permission.map.class: Sonata\AdminBundle\Security\Acl\Permission\AdminPermissionMap
