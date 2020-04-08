@@ -29,7 +29,7 @@
     "symfony-cmf/routing-bundle": "^2.0",
     "sonata-project/page-bundle": "^3.7",
     "sonata-project/datagrid-bundle": "^2.3",
-    "sonata-project/seo-bundle": "2.4",
+    "sonata-project/seo-bundle": "2.10.0",
     "sonata-project/cache-bundle": "^2.4",
     "sonata-project/notification-bundle": "^3.3",
     "php-amqplib/php-amqplib": "^2.7",
