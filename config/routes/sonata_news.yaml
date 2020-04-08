@@ -1,5 +1,5 @@
 ##
-# Copyright (C) 2017 Andrew SASSOYE
+# Copyright (C) 2020 Andrew SASSOYE
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -13,22 +13,11 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ##
-sonata_user:
-    security_acl: true
-    manager_type: orm # can be orm or mongodb
-    impersonating:
-        route: sonata_admin_dashboard
-
-    class:
-        user: AEES\UserBundle\Entity\User
-        group: AEES\UserBundle\Entity\Group
-          # profile:
-          #form:
-          #type: aees_user_registration
-          #handler: sonata.user.registration.form.handler.default
-          #name: aees_user_registration_form
-        #validation_groups:  [Profile]
-
-
-parameters:
-    sonata.user.admin.user.class: AEES\UserBundle\Admin\Model\UserAdmin
+app_news:
+    host: "media.{domain}"
+    resource: '@SonataNewsBundle/Resources/config/routing/news.xml'
+    prefix: /ingenu
+    defaults:
+        domain: '%domain.aees%'
+    requirements:
+        domain: '%domain.aees%'

@@ -1,5 +1,5 @@
 ##
-# Copyright (C) 2017 Andrew SASSOYE
+# Copyright (C) 2020 Andrew SASSOYE
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -19,12 +19,18 @@ sonata_news:
     description:  La revue des ingénieurs
     salt:         'secureToken'
     permalink_generator: sonata.news.permalink.date # sonata.news.permalink.collection
+    db_driver:    'doctrine_orm' # doctrine_orm or doctrine_mongodb it is mandatory to choose one here
 
     comment:
         notification:
             emails:   [email@example.org, email2@example.org]
             from:     no-reply@sonata-project.org
-            template: 'SonataNewsBundle:Mail:comment_notification.txt.twig'
+            template: '@SonataNews/Mail/comment_notification.txt.twig'
 
     class:
-        user: AEES\UserBundle\Entity\User
+        post:       App\Entity\News\Post
+        comment:    App\Entity\News\Comment
+        media:      App\Entity\Media\Media
+        user:       App\Entity\User\User
+        tag:        App\Entity\Classification\Tag
+        collection: App\Entity\Classification\Collection

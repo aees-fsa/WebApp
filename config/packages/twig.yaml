@@ -18,3 +18,7 @@ twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
     exception_controller: null
+
+    form_themes:
+        - '@SonataFormatter/Form/formatter.html.twig'
+        - '@FOSCKEditor/Form/ckeditor_widget.html.twig'

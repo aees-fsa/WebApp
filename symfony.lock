@@ -1,4 +1,7 @@
 {
+    "friendsofsymfony/ckeditor-bundle": {
+        "version": "1.2.0"
+    },
     "guzzlehttp/psr7": {
         "version": "1.6.1"
     },
@@ -67,8 +70,14 @@
     "knplabs/gaufrette": {
         "version": "v0.9.0"
     },
+    "knplabs/knp-markdown-bundle": {
+        "version": "1.8.1"
+    },
     "kriswallsmith/buzz": {
         "version": "v0.16.1"
+    },
+    "michelf/php-markdown": {
+        "version": "1.9.0"
     },
     "php": {
         "version": "7.4"
@@ -95,6 +104,12 @@
             "src/Entity/SonataClassificationTag.php"
         ]
     },
+    "sonata-project/formatter-bundle": {
+        "version": "4.1.3"
+    },
+    "sonata-project/intl-bundle": {
+        "version": "2.7.0"
+    },
     "sonata-project/media-bundle": {
         "version": "3.13",
         "recipe": {
@@ -108,5 +123,8 @@
             "config/routes/sonata_media.yaml",
             "public/upload/media/.gitignore"
         ]
+    },
+    "sonata-project/news-bundle": {
+        "version": "3.11.0"
     }
 }

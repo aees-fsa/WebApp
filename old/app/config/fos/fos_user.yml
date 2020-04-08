@@ -50,8 +50,6 @@ fos_user:
         address: noreply@aees.be
         sender_name: A.E.E.S. ASBL
 
-
-
 doctrine:
 
     dbal:

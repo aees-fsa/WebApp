@@ -39,4 +39,9 @@ return [
     Sonata\ClassificationBundle\SonataClassificationBundle::class => ['all' => true],
     JMS\SerializerBundle\JMSSerializerBundle::class => ['all' => true],
     Sonata\MediaBundle\SonataMediaBundle::class => ['all' => true],
+    Sonata\IntlBundle\SonataIntlBundle::class => ['all' => true],
+    Knp\Bundle\MarkdownBundle\KnpMarkdownBundle::class => ['all' => true],
+    FOS\CKEditorBundle\FOSCKEditorBundle::class => ['all' => true],
+    Sonata\FormatterBundle\SonataFormatterBundle::class => ['all' => true],
+    Sonata\NewsBundle\SonataNewsBundle::class => ['all' => true],
 ];
