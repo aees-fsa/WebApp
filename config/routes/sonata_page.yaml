@@ -13,16 +13,14 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ##
-twig:
-    default_path: '%kernel.project_dir%/templates'
-    debug: '%kernel.debug%'
-    strict_variables: '%kernel.debug%'
-    exception_controller: null
+#sonata_page_api:
+#    resource: '@SonataPageBundle/Resources/config/routing/api.xml'
+#    prefix: /
 
-    globals:
-        domain_aees: '%domain.aees%'
-        domain_jobinge: '%domain.jobinge%'
+#sonata_page_cache:
+#    resource: '@SonataPageBundle/Resources/config/routing/cache.xml'
+#    prefix: /
 
-    form_themes:
-        - '@SonataFormatter/Form/formatter.html.twig'
-        - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
+#sonata_page_exceptions:
+#    resource: '@SonataPageBundle/Resources/config/routing/exceptions.xml'
+#    prefix: /

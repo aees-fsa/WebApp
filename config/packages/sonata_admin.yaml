@@ -28,7 +28,7 @@ sonata_admin:
         role_super_admin: ROLE_SUPER_ADMIN
     assets:
         extra_javascripts:
-            # ...
+            - bundles/sonatapage/sonata-page.back.min.js
             - bundles/fosckeditor/ckeditor.js
             - bundles/sonataformatter/vendor/markitup-markitup/markitup/jquery.markitup.js
             - bundles/sonataformatter/markitup/sets/markdown/set.js
@@ -36,7 +36,7 @@ sonata_admin:
             - bundles/sonataformatter/markitup/sets/textile/set.js
 
         extra_stylesheets:
-            # ...
+            - bundles/sonatapage/sonata-page.back.min.css
             - bundles/sonataformatter/markitup/skins/sonata/style.css
             - bundles/sonataformatter/markitup/sets/markdown/style.css
             - bundles/sonataformatter/markitup/sets/html/style.css

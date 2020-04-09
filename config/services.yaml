@@ -19,7 +19,7 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    base.locale: 'fr-BE'
+    base.locale: 'fr'
     domain.aees: '%env(DOMAIN_AEES)%'
     domain.jobinge: '%env(DOMAIN_JOBINGE)%'
 
@@ -41,5 +41,30 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
+    app.menu_builder:
+        class: App\Menu\Builder
+        arguments: ["@knp_menu.factory"]
+        tags:
+            - { name: knp_menu.menu_builder, method: mainMenu, alias: main}
+
+    Redis:
+        class: Redis
+        calls:
+            -   method: connect
+                arguments:
+                    - '%env(REDIS_HOST)%'
+                    - '%env(int:REDIS_PORT)%'
+
+    Symfony\Component\HttpFoundation\Session\Storage\Handler\RedisSessionHandler:
+        arguments:
+            - '@Redis'
+
+    aees_page.block.header_image:
+        class: App\Block\HeaderImageBlockService
+        arguments:
+            - aees_page.block.header_image
+            - "@templating"
+            - '@service_container'
+            - '@sonata.media.manager.media'
+        tags:
+            - { name: sonata.block }

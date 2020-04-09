@@ -44,4 +44,10 @@ return [
     FOS\CKEditorBundle\FOSCKEditorBundle::class => ['all' => true],
     Sonata\FormatterBundle\SonataFormatterBundle::class => ['all' => true],
     Sonata\NewsBundle\SonataNewsBundle::class => ['all' => true],
+    Sonata\CacheBundle\SonataCacheBundle::class => ['all' => true],
+    Sonata\SeoBundle\SonataSeoBundle::class => ['all' => true],
+    Sonata\NotificationBundle\SonataNotificationBundle::class => ['all' => true],
+    Symfony\Cmf\Bundle\RoutingBundle\CmfRoutingBundle::class => ['all' => true],
+    Sonata\PageBundle\SonataPageBundle::class => ['all' => true],
+    FOS\RestBundle\FOSRestBundle::class => ['all' => true],
 ];

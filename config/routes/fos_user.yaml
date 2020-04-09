@@ -1,0 +1,7 @@
+fos_user:
+    host: "www.{domain}"
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+    defaults:
+        domain: '%domain.aees%'
+    requirements:
+        domain: '%domain.aees%'

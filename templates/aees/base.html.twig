@@ -1,0 +1,121 @@
+{#
+
+ Copyright (C) 2017 Andrew SASSOYE
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, version 3.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+#}
+
+{%- block sonata_page_html_tag -%}
+<!DOCTYPE html>
+<html {{ sonata_seo_html_attributes() }}>
+{% endblock %}
+{% block sonata_page_head %}
+	<head {{ sonata_seo_head_attributes() }}>
+		{{ sonata_seo_metadatas() }}
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		{{ sonata_seo_title() }}
+
+		{% block sonata_page_stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
+
+		{{ sonata_seo_link_canonical() }}
+		{{ sonata_seo_lang_alternates() }}
+
+		{% include 'aees/analytics.html.twig' %}
+
+	</head>
+{% endblock %}
+{% block sonata_page_body_tag %}
+<body>
+{% endblock %}
+
+<header>
+	<section id="header-top" class="container">
+
+		<ul class="nav justify-content-end">
+			{% if app.user %}
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+					   aria-haspopup="true" aria-expanded="false">Bonjour {{ app.user.firstname }}</a>
+					<div class="dropdown-menu dropdown-menu-right">
+						{% if is_granted('ROLE_JOBINGE_ENTREPRISE') %}
+							<a class="dropdown-item"
+							   href="{{ path('jobinge.accountEntreprises.index') }}">{% trans %}
+									jobinge.companies.account.account{% endtrans %}</a>
+						{% endif %}
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="{{ path('fos_user_security_logout') }}">Se déconnecter</a>
+					</div>
+				</li>
+			{% else %}
+
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('fos_user_security_login') }}">{% trans %}
+							jobinge.login{% endtrans %}</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('fos_user_registration_register') }}" target="_blank">{% trans %}
+							jobinge.register{% endtrans %}</a>
+				</li>
+			{% endif %}
+		</ul>
+	</section>
+	<section id="header-main">
+		<div class="container">
+			<nav class="navbar navbar-expand-lg">
+				<a class="navbar-brand" href="/">
+					<img src="{{ asset("build/images/logo.png") }}" alt="Logo"/>
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse"
+				        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+				        aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+					{{ knp_menu_render('main', {'currentClass': 'active'}) }}
+				</div>
+			</nav>
+
+
+		</div>
+	</section>
+	{% block page_header_bottom %}
+	{% endblock %}
+
+</header>
+
+<div class="container" id="content">
+	<div class="row">
+		<div class="col-lg-12">
+			{% block page_content %}
+
+			{% endblock %}
+			{% block content %}{% endblock %}
+		</div>
+	</div>
+</div>
+
+{% include 'aees/footer.html.twig' %}
+
+
+{% block sonata_page_javascripts %}
+	{{ encore_entry_script_tags('app') }}
+{% endblock %}
+
+
+</body>
+</html>

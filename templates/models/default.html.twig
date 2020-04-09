@@ -1,0 +1,52 @@
+{#
+
+ Copyright (C) 2017 Andrew SASSOYE
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as
+ published by the Free Software Foundation, version 3.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+#}
+
+{% if site.host is defined and site.host == 'www.' ~ domain_jobinge %}
+	{% set template = 'jobinge/base.html.twig' %}
+{% elseif site.host is defined and site.host == 'www.' ~ domain_aees %}
+	{% set template = 'aees/base.html.twig' %}
+{% else %}
+	{% set template = 'default/base.html.twig' %}
+{% endif %}
+
+{% extends template %}
+
+{% block sonata_page_body_tag %}
+	{{ parent() }}
+{% endblock %}
+
+{% block sonata_page_javascripts %}
+	{{ parent() }}
+{% endblock %}
+
+{% block page_header_bottom %}
+	{{ sonata_page_render_container('header') }}
+{% endblock %}
+
+{% block page_content %}
+
+
+	{% if content is defined %}
+		{{ content|raw }}
+	 {% else %}
+		 {{ sonata_page_render_container('content') }}
+	 {% endif %}
+
+
+
+{% endblock %}

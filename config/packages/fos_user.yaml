@@ -17,9 +17,28 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: App\Entity\User\User
+
     group:
         group_class: App\Entity\User\Group
         group_manager: sonata.user.orm.group_manager
+
     from_email:
-        address: '%env(MAILER_DEFAULT_MAIL)%'
-        sender_name: '%env(MAILER_DEFAULT_NAME)%'
+        address: noreply@aees.be
+        sender_name: A.E.E.S. ASBL
+
+    registration:
+        confirmation:
+            enabled: true
+            from_email:
+                sender_name: A.E.E.S. ASBL
+                address: registration@accounts.aees.be
+            template: mail/register.html.twig
+
+        form:
+            type: App\Form\User\RegistrationFormType
+
+    resetting:
+        email:
+            from_email:
+                sender_name: A.E.E.S. ASBL
+                address: resetting@accounts.aees.be

@@ -1,5 +1,5 @@
 ##
-# Copyright (C) 2017 Andrew SASSOYE
+# Copyright (C) 2020 Andrew SASSOYE
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -13,31 +13,18 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ##
-cmf_routing:
-    chain:
-        routers_by_id:
-            sonata.page.router: 150
-            router.default: 100
-
-
-
 sonata_page:
-    slugify_service:   sonata.core.slugify.cocur # old BC value is sonata.core.slugify.native
+    slugify_service: sonata.core.slugify.cocur
     multisite: host_with_path_by_locale
-    default_template: default # template key from models section, used as default for new pages
+    use_streamed_response: false
+
+    router_auto_register:
+        enabled: true
+        priority: 150
+
     ignore_route_patterns:
         - ^(.*)admin(.*)   # ignore admin route, ie route containing 'admin'
         - ^_(.*)          # ignore symfony routes
-
-    ignore_uri_patterns:
-        - ^/admin(.*)
-        - ^/api/(.*)
-        - ^jobinge_cv(.*)
-
-    ignore_route_patterns:
-        - (.*)admin(.*)     # ignore admin route, ie route containing 'admin'
-        - ^_(.*)            # ignore symfony routes
-        - (.*)cvbook(.*)
 
     ignore_routes:
         - sonata_page_cache_esi
@@ -49,13 +36,15 @@ sonata_page:
         - sonata_cache_js_async
         - sonata_cache_js_sync
         - sonata_cache_apc
+        - sonata_media_download
 
-    catch_exceptions:
-        not_found: [404]
-        fatal: [500]
+    ignore_uri_patterns:
+        - ^\/admin\/   # ignore admin route, ie route containing 'admin'
+
+    default_template: default
     templates:
         default:
-            path: ':models:default.html.twig'
+            path: 'models/default.html.twig'
             name: 'default'
             containers:
                 header:
@@ -74,7 +63,7 @@ sonata_page:
                     C: content
                     F: footer
         col8+4:
-            path: ':models:col8+4.html.twig'
+            path: 'models/col8+4.html.twig'
             name: 'col8+4'
             containers:
                 header:
@@ -96,7 +85,7 @@ sonata_page:
                     A: aside
 
         col4+4+4:
-            path: ':models:col4+4+4.html.twig'
+            path: 'models/col4+4+4.html.twig'
             name: '3 collones'
             containers:
                 header:
@@ -132,7 +121,7 @@ sonata_page:
                     B: below
 
         col6+6:
-            path: ':models:col6+6.html.twig'
+            path: 'models/col6+6.html.twig'
             name: '2 colonnes'
             containers:
                 header:
@@ -166,7 +155,7 @@ sonata_page:
 
 
         homepage:
-            path: ':models:homepage.html.twig'
+            path: 'models\homepage.html.twig'
             name: 'homepage'
             containers:
                 slider:
@@ -179,7 +168,14 @@ sonata_page:
                 mapping:
                     S: slider
 
+    direct_publication: '%kernel.debug%'
 
+    catch_exceptions:
+        not_found: [404]    # render 404 page with "not_found" key (name generated: _page_internal_error_{key})
+        fatal:     [500]    # so you can use the same page for different http errors or specify specific page for each error
 
-    # Generates a snapshot when a page is saved (from the admin)
-    direct_publication: true # or %kernel.debug% if you want to publish in dev mode (but not in prod)
+    class:
+        page: 'App\Entity\Page\Page'
+        snapshot: 'App\Entity\Page\Snapshot'
+        block: 'App\Entity\Page\Block'
+        site: 'App\Entity\Page\Site'
