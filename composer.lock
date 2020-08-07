@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "27174f64e9c48ab9ca135803412cfe99",
+    "content-hash": "60c413b8f3077ac6c33aa9d6f3f50d34",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -3361,6 +3361,7 @@
                 "javascript",
                 "minification"
             ],
+            "abandoned": true,
             "time": "2016-04-19T09:28:22+00:00"
         },
         {
@@ -4658,6 +4659,7 @@
             "keywords": [
                 "sonata"
             ],
+            "abandoned": true,
             "time": "2017-12-16T18:36:00+00:00"
         },
         {
@@ -7417,16 +7419,16 @@
         },
         {
             "name": "twbs/bootstrap",
-            "version": "v4.0.0-beta",
+            "version": "v4.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "35f80bb12e4e71fd777ee60ffa43711d8f84b1a6"
+                "reference": "5f2480a90ab911babc53039835fe78c6fc12646d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/35f80bb12e4e71fd777ee60ffa43711d8f84b1a6",
-                "reference": "35f80bb12e4e71fd777ee60ffa43711d8f84b1a6",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/5f2480a90ab911babc53039835fe78c6fc12646d",
+                "reference": "5f2480a90ab911babc53039835fe78c6fc12646d",
                 "shasum": ""
             },
             "replace": {
@@ -7444,16 +7446,16 @@
             ],
             "authors": [
                 {
-                    "name": "Jacob Thornton",
-                    "email": "jacobthornton@gmail.com"
-                },
-                {
                     "name": "Mark Otto",
                     "email": "markdotto@gmail.com"
+                },
+                {
+                    "name": "Jacob Thornton",
+                    "email": "jacobthornton@gmail.com"
                 }
             ],
             "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
-            "homepage": "https://getbootstrap.com",
+            "homepage": "https://getbootstrap.com/",
             "keywords": [
                 "JS",
                 "css",
@@ -7464,7 +7466,13 @@
                 "sass",
                 "web"
             ],
-            "time": "2017-08-11T03:56:35+00:00"
+            "funding": [
+                {
+                    "url": "https://opencollective.com/bootstrap",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2020-08-06T16:22:43+00:00"
         },
         {
             "name": "twig/extensions",
@@ -7817,9 +7825,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "twbs/bootstrap": 10
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
