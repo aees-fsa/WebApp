@@ -1,0 +1,28 @@
+version: 2
+updates:
+- package-ecosystem: composer
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: symfony/phpunit-bridge
+    versions:
+    - 5.2.2
+    - 5.2.3
+    - 5.2.4
+  - dependency-name: symfony/http-client
+    versions:
+    - 4.4.19
+    - 4.4.20
+  - dependency-name: php-amqplib/php-amqplib
+    versions:
+    - 2.12.1
+    - 2.12.2
+  - dependency-name: nelmio/api-doc-bundle
+    versions:
+    - 3.8.1
+  - dependency-name: friendsofsymfony/rest-bundle
+    versions:
+    - 2.8.5
