@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "27174f64e9c48ab9ca135803412cfe99",
+    "content-hash": "6319efa46e349327ded696e17d8c0c39",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -684,6 +684,7 @@
                 "cache",
                 "caching"
             ],
+            "abandoned": true,
             "time": "2019-11-29T11:22:01+00:00"
         },
         {
@@ -1216,6 +1217,7 @@
                 "reflection",
                 "static"
             ],
+            "abandoned": "roave/better-reflection",
             "time": "2020-03-27T11:06:43+00:00"
         },
         {
@@ -3361,6 +3363,7 @@
                 "javascript",
                 "minification"
             ],
+            "abandoned": true,
             "time": "2016-04-19T09:28:22+00:00"
         },
         {
@@ -3999,6 +4002,7 @@
                 "configuration",
                 "distribution"
             ],
+            "abandoned": true,
             "time": "2019-06-18T15:43:58+00:00"
         },
         {
@@ -4120,6 +4124,7 @@
                 }
             ],
             "description": "A security checker for your composer.lock",
+            "abandoned": "https://github.com/fabpot/local-php-security-checker",
             "time": "2019-11-01T13:20:14+00:00"
         },
         {
@@ -4127,12 +4132,12 @@
             "version": "v1.0.9",
             "source": {
                 "type": "git",
-                "url": "https://github.com/simplethings/EntityAuditBundle.git",
+                "url": "https://github.com/sonata-project/EntityAuditBundle.git",
                 "reference": "5725ecab2d132288842d9a075d1a8662520829c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simplethings/EntityAuditBundle/zipball/5725ecab2d132288842d9a075d1a8662520829c5",
+                "url": "https://api.github.com/repos/sonata-project/EntityAuditBundle/zipball/5725ecab2d132288842d9a075d1a8662520829c5",
                 "reference": "5725ecab2d132288842d9a075d1a8662520829c5",
                 "shasum": ""
             },
@@ -4172,6 +4177,7 @@
                 "database",
                 "persistence"
             ],
+            "abandoned": "sonata-project/entity-audit-bundle",
             "time": "2018-04-10T08:14:31+00:00"
         },
         {
@@ -4658,6 +4664,7 @@
             "keywords": [
                 "sonata"
             ],
+            "abandoned": true,
             "time": "2017-12-16T18:36:00+00:00"
         },
         {
@@ -7417,43 +7424,38 @@
         },
         {
             "name": "twbs/bootstrap",
-            "version": "v4.0.0-beta",
+            "version": "v5.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "35f80bb12e4e71fd777ee60ffa43711d8f84b1a6"
+                "reference": "688bce4fa695cc360a0d084e34f029b0c192b223"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/35f80bb12e4e71fd777ee60ffa43711d8f84b1a6",
-                "reference": "35f80bb12e4e71fd777ee60ffa43711d8f84b1a6",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/688bce4fa695cc360a0d084e34f029b0c192b223",
+                "reference": "688bce4fa695cc360a0d084e34f029b0c192b223",
                 "shasum": ""
             },
             "replace": {
                 "twitter/bootstrap": "self.version"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.3.x-dev"
-                }
-            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "authors": [
                 {
-                    "name": "Jacob Thornton",
-                    "email": "jacobthornton@gmail.com"
-                },
-                {
                     "name": "Mark Otto",
                     "email": "markdotto@gmail.com"
+                },
+                {
+                    "name": "Jacob Thornton",
+                    "email": "jacobthornton@gmail.com"
                 }
             ],
             "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
-            "homepage": "https://getbootstrap.com",
+            "homepage": "https://getbootstrap.com/",
             "keywords": [
                 "JS",
                 "css",
@@ -7464,7 +7466,7 @@
                 "sass",
                 "web"
             ],
-            "time": "2017-08-11T03:56:35+00:00"
+            "time": "2021-06-22T18:29:16+00:00"
         },
         {
             "name": "twig/extensions",
@@ -7519,6 +7521,7 @@
                 "i18n",
                 "text"
             ],
+            "abandoned": true,
             "time": "2018-12-05T18:34:18+00:00"
         },
         {
@@ -7817,9 +7820,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "twbs/bootstrap": 10
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
